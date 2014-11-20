@@ -14,11 +14,11 @@
 # informative welcome screen.
 
 -
-  name: 'Welcome'
-  uriPattern: '<WelcomeSubroutes>'
+  name: 'OpenAgenda'
+  uriPattern: '<OpenAgendaSubroutes>'
   subRoutes:
-    WelcomeSubroutes:
-      package: TYPO3.Welcome
+    OpenAgendaSubroutes:
+      package: OpenAgenda.Application
 
 ##
 # Flow subroutes
