@@ -30,7 +30,7 @@
         "doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
 		"facebook/react": "dev-master",
-		"google/anguarjs": "dev-master"
+		"google/angularjs": "dev-master"
     },
     "require-dev": {
         "typo3/kickstart": "2.2.*",
