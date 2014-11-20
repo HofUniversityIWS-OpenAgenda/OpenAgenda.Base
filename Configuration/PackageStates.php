@@ -12,12 +12,12 @@
 return array (
   'packages' => 
   array (
-    'TYPO3.Fluid' => 
+    'TYPO3.Party' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/fluid',
+      'composerName' => 'typo3/party',
       'state' => 'active',
-      'packagePath' => 'Framework/TYPO3.Fluid/',
+      'packagePath' => 'Framework/TYPO3.Party/',
       'classesPath' => 'Classes/',
     ),
     'TYPO3.Eel' => 
@@ -140,12 +140,12 @@ return array (
       'packagePath' => 'Framework/TYPO3.Flow/',
       'classesPath' => 'Classes/',
     ),
-    'TYPO3.Party' => 
+    'TYPO3.Fluid' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/party',
+      'composerName' => 'typo3/fluid',
       'state' => 'active',
-      'packagePath' => 'Framework/TYPO3.Party/',
+      'packagePath' => 'Framework/TYPO3.Fluid/',
       'classesPath' => 'Classes/',
     ),
     'TYPO3.Kickstart' => 
@@ -154,14 +154,6 @@ return array (
       'composerName' => 'typo3/kickstart',
       'state' => 'active',
       'packagePath' => 'Framework/TYPO3.Kickstart/',
-      'classesPath' => 'Classes/',
-    ),
-    'TYPO3.Welcome' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/welcome',
-      'state' => 'active',
-      'packagePath' => 'Framework/TYPO3.Welcome/',
       'classesPath' => 'Classes/',
     ),
     'mikey179.vfsStream' => 
@@ -283,6 +275,22 @@ return array (
       'classesPath' => 'Classes/',
       'manifestPath' => '',
       'composerName' => 'facebook/react',
+    ),
+    'TYPO3.LDAP' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/ldap',
+      'state' => 'active',
+      'packagePath' => 'Application/TYPO3.LDAP/',
+      'classesPath' => 'Classes/',
+    ),
+    'TYPO3.Twitter.Bootstrap' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/twitter-bootstrap',
+      'state' => 'active',
+      'packagePath' => 'Application/TYPO3.Twitter.Bootstrap/',
+      'classesPath' => 'Classes/',
     ),
   ),
   'version' => 4,
