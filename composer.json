@@ -22,6 +22,10 @@
 		{
 			"type": "vcs",
 			"url": "https://github.com/OpenAgenda/Google.AngularJS.git"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/OpenAgenda/TYPO3.Twitter.Bootstrap.git"
 		}
 	],
     "require": {
