@@ -13,6 +13,10 @@
 		},
 		{
 			"type": "vcs",
+			"url": "git://git.typo3.org/Packages/TYPO3.SwiftMailer.git"
+		},
+		{
+			"type": "vcs",
 			"url": "https://github.com/OpenAgenda/OpenAgenda.Application.git"
 		},
 		{
@@ -31,6 +35,7 @@
     "require": {
         "typo3/flow": "2.2.*",
 		"typo3/ldap": "dev-master",
+		"typo3/swiftmailer": "dev-master",
         "doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
 		"typo3/twitter-bootstrap": "dev-master",
