@@ -1,11 +1,11 @@
 {
-    "name": "openagenda/base-distribution",
-    "description": "OpenAgenda Base Distribution",
-    "license": "LGPL-3.0+",
-    "config": {
-        "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
-    },
+	"name": "openagenda/base-distribution",
+	"description": "OpenAgenda Base Distribution",
+	"license": "LGPL-3.0+",
+	"config": {
+		"vendor-dir": "Packages/Libraries",
+		"bin-dir": "bin"
+	},
 	"repositories": [
 		{
 			"type": "vcs",
@@ -32,29 +32,29 @@
 			"url": "https://github.com/OpenAgenda/TYPO3.Twitter.Bootstrap.git"
 		}
 	],
-    "require": {
-        "typo3/flow": "2.2.*",
+	"require": {
+		"typo3/flow": "2.2.*",
 		"typo3/ldap": "dev-master",
 		"typo3/swiftmailer": "dev-master",
-        "doctrine/migrations": "@dev",
+		"doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
 		"typo3/twitter-bootstrap": "dev-master",
 		"facebook/react": "dev-master",
 		"google/angularjs": "dev-master"
-    },
-    "require-dev": {
-        "typo3/kickstart": "2.2.*",
-        "typo3/buildessentials": "2.2.*",
-        "phpunit/phpunit": "4.0.*",
-        "mikey179/vfsstream": "1.2.*"
-    },
-    "suggest": {
-        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
-    },
-    "scripts": {
-        "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-package-update": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
-    }
+	},
+	"require-dev": {
+		"typo3/kickstart": "2.2.*",
+		"typo3/buildessentials": "2.2.*",
+		"phpunit/phpunit": "4.0.*",
+		"mikey179/vfsstream": "1.2.*"
+	},
+	"suggest": {
+		"ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
+	},
+	"scripts": {
+		"post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+		"post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+		"post-package-update": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+		"post-package-install": "TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+	}
 }
