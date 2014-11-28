@@ -292,6 +292,22 @@ return array (
       'packagePath' => 'Application/TYPO3.Twitter.Bootstrap/',
       'classesPath' => 'Classes/',
     ),
+    'swiftmailer.swiftmailer' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'swiftmailer/swiftmailer',
+      'state' => 'active',
+      'packagePath' => 'Libraries/swiftmailer/swiftmailer/',
+      'classesPath' => 'Classes/',
+    ),
+    'TYPO3.SwiftMailer' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/swiftmailer',
+      'state' => 'active',
+      'packagePath' => 'Application/TYPO3.SwiftMailer/',
+      'classesPath' => 'Classes/',
+    ),
   ),
   'version' => 4,
 );
