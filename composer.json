@@ -9,7 +9,8 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "git://git.typo3.org/Packages/TYPO3.LDAP.git"
+			"url": "https://github.com/OpenAgenda/TYPO3.LDAP.git",
+			"url-upstream": "git://git.typo3.org/Packages/TYPO3.LDAP.git"
 		},
 		{
 			"type": "vcs",
