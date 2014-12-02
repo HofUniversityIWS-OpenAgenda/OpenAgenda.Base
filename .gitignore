@@ -1,6 +1,7 @@
 .idea/
 /Build/
-/Configuration/*/
+/Configuration/Development/
+/Configuration/Production/
 /Data/
 /Packages/
 /Web/
