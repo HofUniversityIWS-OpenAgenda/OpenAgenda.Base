@@ -1,0 +1,18 @@
+TYPO3:
+  Flow:
+    persistence:
+      backendOptions:
+        driver: 'pdo_mysql'
+        dbname: 'openagenda'
+        user: 'root'
+        password: ''
+        host: 'localhost'
+    i18n:
+      defaultLocale: 'de'
+    security:
+      enable: TRUE
+      authentication:
+        authenticationStrategy: oneToken
+        providers:
+          DefaultProvider:
+            provider: 'PersistedUsernamePasswordProvider'
