@@ -14,10 +14,6 @@
 		},
 		{
 			"type": "vcs",
-			"url": "git://git.typo3.org/Packages/TYPO3.SwiftMailer.git"
-		},
-		{
-			"type": "vcs",
 			"url": "https://github.com/OpenAgenda/OpenAgenda.Application.git"
 		},
 		{
