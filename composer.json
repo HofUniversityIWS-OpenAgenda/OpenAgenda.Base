@@ -30,7 +30,7 @@
 		}
 	],
 	"require": {
-		"typo3/flow": "2.2.*",
+		"typo3/flow": "2.3.*",
 		"typo3/ldap": "dev-master",
 		"typo3/swiftmailer": "dev-master",
 		"doctrine/migrations": "@dev",
@@ -40,10 +40,10 @@
 		"google/angularjs": "dev-master"
 	},
 	"require-dev": {
-		"typo3/kickstart": "2.2.*",
-		"typo3/buildessentials": "2.2.*",
-		"phpunit/phpunit": "4.0.*",
-		"mikey179/vfsstream": "1.2.*"
+		"typo3/kickstart": "2.3.*",
+		"typo3/buildessentials": "2.3.*",
+		"phpunit/phpunit": "4.3.*",
+		"mikey179/vfsstream": "1.4.*"
 	},
 	"suggest": {
 		"ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
