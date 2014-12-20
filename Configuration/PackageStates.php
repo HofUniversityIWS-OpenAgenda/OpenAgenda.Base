@@ -12,12 +12,12 @@
 return array (
   'packages' => 
   array (
-    'TYPO3.Party' => 
+    'TYPO3.Fluid' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/party',
+      'composerName' => 'typo3/fluid',
       'state' => 'active',
-      'packagePath' => 'Framework/TYPO3.Party/',
+      'packagePath' => 'Framework/TYPO3.Fluid/',
       'classesPath' => 'Classes/',
     ),
     'TYPO3.Eel' => 
@@ -140,12 +140,12 @@ return array (
       'packagePath' => 'Framework/TYPO3.Flow/',
       'classesPath' => 'Classes/',
     ),
-    'TYPO3.Fluid' => 
+    'TYPO3.Party' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/fluid',
+      'composerName' => 'typo3/party',
       'state' => 'active',
-      'packagePath' => 'Framework/TYPO3.Fluid/',
+      'packagePath' => 'Framework/TYPO3.Party/',
       'classesPath' => 'Classes/',
     ),
     'TYPO3.Kickstart' => 
@@ -220,6 +220,14 @@ return array (
       'packagePath' => 'Libraries/phpunit/php-timer/',
       'classesPath' => 'Classes/',
     ),
+    'Doctrine.Instantiator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'doctrine/instantiator',
+      'state' => 'active',
+      'packagePath' => 'Libraries/doctrine/instantiator/',
+      'classesPath' => 'src/',
+    ),
     'phpunit.phpunitmockobjects' => 
     array (
       'manifestPath' => '',
@@ -242,6 +250,14 @@ return array (
       'composerName' => 'sebastian/exporter',
       'state' => 'active',
       'packagePath' => 'Libraries/sebastian/exporter/',
+      'classesPath' => 'Classes/',
+    ),
+    'sebastian.comparator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/comparator',
+      'state' => 'active',
+      'packagePath' => 'Libraries/sebastian/comparator/',
       'classesPath' => 'Classes/',
     ),
     'phpunit.phpunit' => 
@@ -267,14 +283,6 @@ return array (
       'classesPath' => 'Classes/',
       'manifestPath' => '',
       'composerName' => 'google/angularjs',
-    ),
-    'Facebook.React' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'Application/Facebook.React/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'facebook/react',
     ),
     'TYPO3.LDAP' => 
     array (
@@ -306,6 +314,70 @@ return array (
       'composerName' => 'typo3/swiftmailer',
       'state' => 'active',
       'packagePath' => 'Application/TYPO3.SwiftMailer/',
+      'classesPath' => 'Classes/',
+    ),
+    'zendframework.zendmemory' => 
+    array (
+      'manifestPath' => 'Zend/Memory/',
+      'composerName' => 'zendframework/zend-memory',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-memory/',
+      'classesPath' => '',
+    ),
+    'zendframework.zendstdlib' => 
+    array (
+      'manifestPath' => 'Zend/Stdlib/',
+      'composerName' => 'zendframework/zend-stdlib',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-stdlib/',
+      'classesPath' => '',
+    ),
+    'zendframework.zendeventmanager' => 
+    array (
+      'manifestPath' => 'Zend/EventManager/',
+      'composerName' => 'zendframework/zend-eventmanager',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-eventmanager/',
+      'classesPath' => '',
+    ),
+    'zendframework.zendservicemanager' => 
+    array (
+      'manifestPath' => 'Zend/ServiceManager/',
+      'composerName' => 'zendframework/zend-servicemanager',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-servicemanager/',
+      'classesPath' => '',
+    ),
+    'zendframework.zendcode' => 
+    array (
+      'manifestPath' => 'Zend/Code/',
+      'composerName' => 'zendframework/zend-code',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-code/',
+      'classesPath' => '',
+    ),
+    'zendframework.zenddi' => 
+    array (
+      'manifestPath' => 'Zend/Di/',
+      'composerName' => 'zendframework/zend-di',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zend-di/',
+      'classesPath' => '',
+    ),
+    'zendframework.zendpdf' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'zendframework/zendpdf',
+      'state' => 'active',
+      'packagePath' => 'Libraries/zendframework/zendpdf/',
+      'classesPath' => 'library/',
+    ),
+    'OliverHader.PdfRendering' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'oliverhader/pdfrendering',
+      'state' => 'active',
+      'packagePath' => 'Application/OliverHader.PdfRendering/',
       'classesPath' => 'Classes/',
     ),
   ),
