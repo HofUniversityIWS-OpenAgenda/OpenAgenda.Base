@@ -18,7 +18,7 @@
 		},
 		{
 			"type": "vcs",
-			"url": "https://github.com/OpenAgenda/Facebook.React.git"
+			"url": "https://github.com/OpenAgenda/ZendPdf.git"
 		},
 		{
 			"type": "vcs",
@@ -36,7 +36,8 @@
 		"doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
 		"typo3/twitter-bootstrap": "dev-master",
-		"google/angularjs": "dev-master"
+		"google/angularjs": "dev-master",
+		"zendframework/zendpdf": "dev-master"
 	},
 	"require-dev": {
 		"typo3/kickstart": "2.3.*",
