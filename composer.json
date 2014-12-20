@@ -36,7 +36,6 @@
 		"doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
 		"typo3/twitter-bootstrap": "dev-master",
-		"facebook/react": "dev-master",
 		"google/angularjs": "dev-master"
 	},
 	"require-dev": {
