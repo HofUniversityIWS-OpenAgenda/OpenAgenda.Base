@@ -18,6 +18,10 @@
 		},
 		{
 			"type": "vcs",
+			"url": "https://github.com/OpenAgenda/OliverHader.PdfRendering.git"
+		},
+		{
+			"type": "vcs",
 			"url": "https://github.com/OpenAgenda/ZendPdf.git"
 		},
 		{
@@ -35,6 +39,7 @@
 		"typo3/swiftmailer": "dev-master",
 		"doctrine/migrations": "@dev",
 		"openagenda/application": "dev-master",
+		"oliverhader/pdfrendering": "dev-master",
 		"typo3/twitter-bootstrap": "dev-master",
 		"google/angularjs": "dev-master",
 		"zendframework/zendpdf": "dev-master"
