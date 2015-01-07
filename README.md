@@ -1,19 +1,16 @@
-OpenAgenda Base Distribution
-============================
+# OpenAgenda Base Distribution
 
 Warning: This package is currently in development and highly experimental
 
 
-How to install
---------------
+## How to install
 
 * git clone https://github.com/OpenAgenda/OpenAgenda.Base.git
 * cd OpenAgenda.Base
 * composer install --dev
 
 
-Database
---------
+## Database
 
 Due to some foreign key constraints on RDBMS level, correct collations are required.
 For instance one would like to create a new database like this
