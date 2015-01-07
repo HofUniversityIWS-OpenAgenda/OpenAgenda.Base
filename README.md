@@ -5,10 +5,14 @@ Warning: This package is currently in development and highly experimental
 
 ## How to install
 
-* git clone https://github.com/OpenAgenda/OpenAgenda.Base.git
-* cd OpenAgenda.Base
-* composer install --dev
+```shell
+git clone https://github.com/OpenAgenda/OpenAgenda.Base.git
+cd OpenAgenda.Base
+composer install --dev
+sudo ./flow core:setfilepermissions <your-CLI-username> www-data www-data
+```
 
+Find further details in the [TYPO3 Flow documentation](http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartII/Installation.html).
 
 ## Database
 
