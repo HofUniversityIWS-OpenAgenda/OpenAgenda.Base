@@ -1,0 +1,29 @@
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    helpers: tests/_support
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+modules:
+    config:
+        Db:
+            dsn: ''
+            user: ''
+            password: ''
+            dump: tests/_data/dump.sql
+extensions:
+    enabled:
+        - Codeception\Extension\Phantoman
+        - Codeception\Extension\Flowception
+    config:
+        Codeception\Extension\Phantoman:
+            # see https://github.com/site5/phantoman#configuration
+            path: 'bin/phantomjs'
+            port: 4444
+        Codeception\Extension\Flowception:
+            rootPath: '.'
+            context: 'Development/Local'

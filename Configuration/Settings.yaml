@@ -4,3 +4,10 @@ TYPO3:
       type: 'TYPO3\SwiftMailer\Transport\MboxTransport'
       options:
         mboxPathAndFilename: '%FLOW_PATH_DATA%/Persistent/SentMails'
+  Flow:
+    object:
+      excludeClasses:
+        'codeception.codeception': ['.*']
+        'react.promise': ['.*']
+        'guzzlehttp.*': ['.*']
+        'site5.*': ['.*']

@@ -1,0 +1,18 @@
+# Codeception Test Suite Configuration
+
+# suite for acceptance tests.
+# perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - AcceptanceHelper
+    config:
+        AcceptanceHelper:
+            # see http://codeception.com/docs/modules/WebDriver
+            url: 'http://openagenda.local/'
+            browser: 'phantomjs'
+            window_size: 1024x768
+            restart: true
+            port: 4444

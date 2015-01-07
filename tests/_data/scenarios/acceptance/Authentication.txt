@@ -1,0 +1,7 @@
+I WANT TO LOGIN AND LOGOUT AS ADMIN USER
+
+I am on page '/'
+I login with credentials 'admin@openagenda.org'," 'password'
+I wait for text 'Hallo Mark'," NULL"," 'h4.ng-binding'
+I see 'Hallo Mark'," 'h4.ng-binding'
+I logout ""

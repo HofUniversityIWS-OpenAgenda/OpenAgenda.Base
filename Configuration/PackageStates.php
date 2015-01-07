@@ -380,6 +380,110 @@ return array (
       'packagePath' => 'Application/OliverHader.PdfRendering/',
       'classesPath' => 'Classes/',
     ),
+    'facebook.webdriver' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'facebook/webdriver',
+      'state' => 'active',
+      'packagePath' => 'Libraries/facebook/webdriver/',
+      'classesPath' => 'Classes/',
+    ),
+    'guzzlehttp.streams' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'guzzlehttp/streams',
+      'state' => 'active',
+      'packagePath' => 'Libraries/guzzlehttp/streams/',
+      'classesPath' => 'src/',
+    ),
+    'react.promise' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'react/promise',
+      'state' => 'active',
+      'packagePath' => 'Libraries/react/promise/',
+      'classesPath' => 'src/',
+    ),
+    'guzzlehttp.ringphp' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'guzzlehttp/ringphp',
+      'state' => 'active',
+      'packagePath' => 'Libraries/guzzlehttp/ringphp/',
+      'classesPath' => 'src/',
+    ),
+    'guzzlehttp.guzzle' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'guzzlehttp/guzzle',
+      'state' => 'active',
+      'packagePath' => 'Libraries/guzzlehttp/guzzle/',
+      'classesPath' => 'src/',
+    ),
+    'symfony.finder' => 
+    array (
+      'manifestPath' => 'Symfony/Component/Finder/',
+      'composerName' => 'symfony/finder',
+      'state' => 'active',
+      'packagePath' => 'Libraries/symfony/finder/',
+      'classesPath' => '',
+    ),
+    'symfony.eventdispatcher' => 
+    array (
+      'manifestPath' => 'Symfony/Component/EventDispatcher/',
+      'composerName' => 'symfony/event-dispatcher',
+      'state' => 'active',
+      'packagePath' => 'Libraries/symfony/event-dispatcher/',
+      'classesPath' => '',
+    ),
+    'symfony.browserkit' => 
+    array (
+      'manifestPath' => 'Symfony/Component/BrowserKit/',
+      'composerName' => 'symfony/browser-kit',
+      'state' => 'active',
+      'packagePath' => 'Libraries/symfony/browser-kit/',
+      'classesPath' => '',
+    ),
+    'symfony.cssselector' => 
+    array (
+      'manifestPath' => 'Symfony/Component/CssSelector/',
+      'composerName' => 'symfony/css-selector',
+      'state' => 'active',
+      'packagePath' => 'Libraries/symfony/css-selector/',
+      'classesPath' => '',
+    ),
+    'codeception.codeception' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'codeception/codeception',
+      'state' => 'active',
+      'packagePath' => 'Libraries/codeception/codeception/',
+      'classesPath' => 'src/',
+    ),
+    'site5.phantoman' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'site5/phantoman',
+      'state' => 'active',
+      'packagePath' => 'Libraries/site5/phantoman/',
+      'classesPath' => 'src/',
+    ),
+    'jakoch.phantomjsinstaller' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'jakoch/phantomjs-installer',
+      'state' => 'active',
+      'packagePath' => 'Libraries/jakoch/phantomjs-installer/',
+      'classesPath' => 'src/',
+    ),
+    'oliverhader.flowception' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'oliverhader/flowception',
+      'state' => 'active',
+      'packagePath' => 'Libraries/oliverhader/flowception/',
+      'classesPath' => 'src/',
+    ),
   ),
   'version' => 4,
 );
