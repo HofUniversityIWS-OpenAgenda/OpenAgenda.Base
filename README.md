@@ -48,3 +48,8 @@ bin/codecept run acceptance
 * make sure you have a proper configuration for the context you want to have tested
 * make sure tests/acceptance.suite.yml contains the proper URL for the WebDriver
 * (optional) make sure codeception.yml contains the proper TYPO3 Flow context for Flowception
+
+## API Documentation
+
+* [PHP API Documentation](http://openagenda.github.io/OpenAgenda.Base/Api/Php/)
+* [JavaScript API Documentation](http://openagenda.github.io/OpenAgenda.Base/Api/JavaScript/)
