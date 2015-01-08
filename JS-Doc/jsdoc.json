@@ -1,6 +1,6 @@
 {
 	"source": {
-		"include": [ "../Packages/Application/OpenAgenda.Application/Resources/Public/Scripts" ],
+		"include": [ "../Packages/Application/OpenAgenda.Application/Resources/Public/Scripts", "./Readme.md"],
  		 "exclude": [ "../Packages/Application/OpenAgenda.Application/Resources/Public/Scripts/lib" ],
     	 "includePattern": ".+\\.js(doc)?$",
    	  "excludePattern": "(^|\\/|\\\\)_"

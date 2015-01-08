@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AgendaItem</title>
+    <title>JSDoc: Source: Features/Menu/menuController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,179 +17,67 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AgendaItem</h1>
+    <h1 class="page-title">Source: Features/Menu/menuController.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
-        
-        AgendaItem
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="AgendaItem"><span class="type-signature"></span>new AgendaItem<span class="signature">(count)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>count</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Count used for sorting</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line36">line 36</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class angular_module.Menu
+ * @memberOf angular_module
+ * @description This Module contains the Menu
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
+
+angular.module("Menu", [])
+/**
+ * @class angular_module.Menu.MenuCtrl
+ */
+    .controller('MenuCtrl', ['$scope','$rootScope', "$sce", "$location",
+        function ($scope, $rootScope, $sce, $location) {
+            console.log("Menu Controller Loaded");
+
+            /**
+             * @memberOf angular_module.Menu.MenuCtrl
+             * @description Should be used to add a Toolbar.
+             * Not used in this version
+             */
+            $scope.toolBar;
+
+            /**
+             * @function
+             * @memberOf angular_module.Menu.MenuCtrl
+             * @description Change the HTML in the left Toolbar
+             */
+            $rootScope.changeToolBar = function (htmlCode) {
+                $scope.toolBar = htmlCode;
+            };
+            /**
+             * @function
+             * @memberOf angular_module.Menu.MenuCtrl
+             * @description Insert new Toolbar as HTML in the left Toolbar
+             */
+            $scope.insertToolbar = function() {
+                return $sce.trustAsHtml($scope.toolBar)
+            }
+
+            /**
+             * @function
+             * @memberOf angular_module.Menu.MenuCtrl
+             * @description Set the active Menu item
+             */
+            $scope.isActive = function (viewLocation) {
+                var active = (viewLocation === $location.path());
+                return active;
+            };
+        }]);</code></pre>
+        </article>
+    </section>
 
 
 

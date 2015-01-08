@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/TopBar/topBarController.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/TopBar/topBarController.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class angular_module.TopBar
+ * @memberOf angular_module
+ * @description This Module contains the controller for the topbar
+ * Its used to load personal notifications e.g. initiations
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
+
+angular.module("TopBar", [])
+/**
+ * @class angular_module.TopBar.TopBarCtrl
+ */
+    .controller('TobBarCtrl', ['$scope', '$rootScope', '$http', 'ModalDialog', 'CommonResourceHelper',
+        function ($scope, $rootScope, $http, ModalDialog, CommonResourceHelper) {
+            console.log("Topbar Controller Loaded");
+
+            /**
+             * @memberOf angular_module.TopBar.TopBarCtrl
+             * @description Globally stored notifications
+             */
+            $rootScope.notifications = [];
+            //getNotifications from Server
+            /**
+             * @function
+             * @memberOf angular_module.TopBar.TopBarCtrl
+             * @description Reload all personal Notifications
+             */
+            function reloadNotifications() {
+                $scope.personalInfos = CommonResourceHelper.getPersonalInfos().get(function () {
+                    $rootScope.notifications = $scope.personalInfos.openInvitations;
+                });
+            };
+            reloadNotifications();
+
+            $scope.test = function () {
+                console.log($scope.getNotifications());
+            };
+            /**
+             * @function
+             * @memberOf angular_module.TopBar.TopBarCtrl
+             */
+            $scope.getNotifications = function () {
+                return $rootScope.notifications;
+            };
+            /*
+            * If Heartbeat is activated, a message is shown when server is not reachable
+            * */
+             $rootScope.$watch('online', function (newValue, oldValue) {
+                if (!newValue &amp;&amp; typeof newValue != 'undefined') {
+                    var modalDefaults = {
+                        templateUrl: '/template/modaldialog/warning.html'
+                    };
+                    var modalOptions = {
+                        headerText: 'Hinweis',
+                        bodyText: 'Die Verbindung zum Server ist verloren gegangen!'
+                    };
+                    ModalDialog.showModal(modalDefaults, modalOptions);
+                }
+            });
+
+            /**
+             * @function
+             * @memberOf angular_module.TopBar.TopBarCtrl
+             * @description Is used to accept a certain Meeting. Displays a modal dialog after success or error.
+             * @param {string} id ID of Meeting
+             */
+            $scope.acceptInvitation = function (id) {
+                $http.get('/invitation/accept.json?invitation[__identity]=' + id, {proxy: true}).
+                    success(function (data, status, headers, config) {
+                        console.log("SUCCESS");
+                        var modalOptions = {
+                            headerText: 'Erfolg',
+                            bodyText: 'Meeting-Einleitung erfolgreich akzeptiert!'
+                        };
+                        var modalDefaults = {
+                            templateUrl: '/template/modaldialog/success.html'
+                        };
+                        ModalDialog.showModal(modalDefaults, modalOptions);
+                        reloadNotifications();
+                    }).error(function (data, status, headers, config) {
+                        console.log("ERROR");
+                        var modalOptions = {
+                            headerText: 'Fehler',
+                            bodyText: 'Es ist ein Fehler aufgetreten!'
+                        };
+                        var modalDefaults = {
+                            templateUrl: '/template/modaldialog/error.html'
+                        };
+                        ModalDialog.showModal(modalDefaults, modalOptions);
+                        reloadNotifications();
+                    });
+            };
+
+            /**
+             * @function
+             * @memberOf angular_module.TopBar.TopBarCtrl
+             * @description Is used to decline a certain Meeting. Displays a modal dialog after success or error.
+             * @param {string} id ID of Meeting
+             */
+            $scope.declineInvitation = function (id) {
+                $http.get('/invitation/accept.json?invitation[__identity]=' + id, {proxy: true}).
+                    success(function (data, status, headers, config) {
+                        console.log("SUCCESS");
+                        var modalOptions = {
+                            headerText: 'Erfolg',
+                            bodyText: 'Meeting-Einleitung erfolgreich abgelehnt!'
+                        };
+                        var modalDefaults = {
+                            templateUrl: '/template/modaldialog/success.html'
+                        };
+                        ModalDialog.showModal(modalDefaults, modalOptions);
+                        reloadNotifications();
+
+                    }).error(function (data, status, headers, config) {
+                        console.log("ERROR");
+                        var modalOptions = {
+                            headerText: 'Fehler',
+                            bodyText: 'Es ist ein Fehler aufgetreten!'
+                        };
+                        var modalDefaults = {
+                            templateUrl: '/template/modaldialog/error.html'
+                        };
+                        ModalDialog.showModal(modalDefaults, modalOptions);
+                    });
+            };
+        }]);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 19:42:07 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

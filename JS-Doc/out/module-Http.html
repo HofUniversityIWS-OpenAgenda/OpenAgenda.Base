@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AgendaItem</title>
+    <title>JSDoc: Module: Http</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AgendaItem</h1>
+    <h1 class="page-title">Module: Http</h1>
 
     
 
@@ -28,11 +28,8 @@
 
 <header>
     
-        <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
         
-        AgendaItem
-        </h2>
+            
         
     
 </header>
@@ -41,72 +38,29 @@
     <div class="container-overview">
     
         
+            <div class="description">Http module for capturing requests
 
-    
-    <h2>Constructor</h2>
-    
+Use the configuration property *proxy* to enable this feature.
+The HttpInterceptor takes care of failed requests.
+The HttpManager interacts with the HttpQueue to replay requests.
+The HttpHeartbeat instance checks the Navigator and Server status.
 
-    <h4 class="name" id="AgendaItem"><span class="type-signature"></span>new AgendaItem<span class="signature">(count)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+Changes to the online status are issued using the $rootScope.
+$rootScope.$watch('online', function(newValue, oldValue) { ... });</div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>count</code></td>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
 
 
-            
-            </td>
 
-            
 
-            
 
-            <td class="description last">Count used for sorting</td>
-        </tr>
 
-    
-    </tbody>
-</table>
+
+
+
 
 
 
@@ -131,6 +85,13 @@
     
 
     
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:oliver@typo3.org">Oliver Hader</a></li>
+        </ul>
+    </dd>
+    
 
     
 
@@ -141,7 +102,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line36">line 36</a>
+        <a href="Features_Common_http.js.html">Features/Common/http.js</a>, <a href="Features_Common_http.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -166,7 +127,15 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Example:
+$http.get('url', {}, { proxy: true });
+$http.get({url: 'url', data: data, proxy: true});</code></pre>
 
+
+
+        
     
     </div>
 

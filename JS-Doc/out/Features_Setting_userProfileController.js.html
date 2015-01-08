@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: AgendaItem</title>
+    <title>JSDoc: Source: Features/Setting/userProfileController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,179 +17,78 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: AgendaItem</h1>
+    <h1 class="page-title">Source: Features/Setting/userProfileController.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
-        
-        AgendaItem
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="AgendaItem"><span class="type-signature"></span>new AgendaItem<span class="signature">(count)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>count</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Count used for sorting</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line36">line 36</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @memberOf angular_module
+ *
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ *
+ * @description User Profile controller
+ */
+angular.module("Setting", [])
+
+.controller('userProfileCtrl', ['$scope', '$http', 'OpenAgenda.Data.Utility', 'ModalDialog', 'breadcrumbs',
+        /**
+         * @class angular_module.Setting.UserProfileCtrl
+         * @param $scope {object}
+         * @param $http {object}
+         * @param oaUtility {object}
+         * @param ModalDialog {object}
+         * @param breadcrumbs {object}
+         */
+        function($scope, $http, oaUtility, ModalDialog, breadcrumbs){
+        $scope.breadcrumbs = breadcrumbs;
+        $scope.profile = {};
+        // @todo Password change is missing
+        $scope.password = null;
+        $scope.passwordRepeat = null;
+        $scope.canModifyPassword = false;
+
+        $http.get('setting/getProfile.json').success(function(profile) {
+            $scope.profile = profile;
+            $scope.canModifyPassword = ($scope.profile.$currentProvider === 'DefaultProvider');
+        });
+
+        $scope.persist = function() {
+            var data = {
+                person: oaUtility.jsonCast($scope.profile),
+                password: $scope.canModifyPassword
+                    ? { password: $scope.password, passwordRepeat: $scope.passwordRepeat }
+                    : null
+            };
+            $http.post('setting/updateProfile.json',  data)
+                .success(function() {
+                    var modalOptions = {
+                        headerText: 'Erfolg',
+                        bodyText: 'Ihr Profil wurde aktualisiert...'
+                    };
+                    var modalDefaults = {
+                        templateUrl: '/template/modaldialog/success.html'
+                    };
+                    ModalDialog.showModal(modalDefaults, modalOptions);
+                })
+                .error(function() {
+                    var modalOptions = {
+                        headerText: 'Fehler',
+                        bodyText: 'Es ist ein Fehler beim Übermitteln der Daten aufgetreten! Versuchen Sie es erneut!'
+                    };
+                    var modalDefaults = {
+                        templateUrl: '/template/modaldialog/error.html'
+                    };
+                    ModalDialog.showModal(modalDefaults, modalOptions);
+                });
+        };
+    }]);</code></pre>
+        </article>
+    </section>
 
 
 

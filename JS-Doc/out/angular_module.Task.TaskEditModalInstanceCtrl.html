@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DashboardCtrl</title>
+    <title>JSDoc: Class: TaskEditModalInstanceCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DashboardCtrl</h1>
+    <h1 class="page-title">Class: TaskEditModalInstanceCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Dashboard.html">.Dashboard</a>.</span>
+            <span class="ancestors"><a href="angular_module.Task.html">.Task</a>.</span>
         
-        DashboardCtrl
+        TaskEditModalInstanceCtrl
         </h2>
         
     
@@ -46,11 +46,15 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="DashboardCtrl"><span class="type-signature"></span>new DashboardCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TaskEditModalInstanceCtrl"><span class="type-signature"></span>new TaskEditModalInstanceCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    This controller is used to handle the modal view to view and change a tasks state
+</div>
 
 
 
@@ -93,7 +97,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line10">line 10</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -137,7 +141,7 @@
 
         
             
-<h4 class="name" id=".$scope.meetingList"><span class="type-signature">(static) </span>$scope.meetingList<span class="type-signature"></span></h4>
+<h4 class="name" id=".$scope.task"><span class="type-signature">(static) </span>$scope.task<span class="type-signature"></span></h4>
 
 
 
@@ -177,65 +181,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line32">line 32</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".$scope.personalInfos"><span class="type-signature">(static) </span>$scope.personalInfos<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line25">line 25</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -262,14 +208,14 @@
 
     
 
-    <h4 class="name" id=".findUpcomingMeetings"><span class="type-signature">(static) </span>findUpcomingMeetings<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.cancel"><span class="type-signature">(static) </span>$scope.cancel<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Collect only new and upcoming meetings.
+    Closes a modal window
 </div>
 
 
@@ -313,7 +259,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line70">line 70</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line81">line 81</a>
     </li></ul></dd>
     
 
@@ -344,14 +290,14 @@
 
     
 
-    <h4 class="name" id=".getNotifications"><span class="type-signature">(static) </span>getNotifications<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.ok"><span class="type-signature">(static) </span>$scope.ok<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Get all globally stored Notifications from $rootScope
+    Closes a modal window
 </div>
 
 
@@ -395,89 +341,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".reloadTasks"><span class="type-signature">(static) </span>reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line49">line 49</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line73">line 73</a>
     </li></ul></dd>
     
 

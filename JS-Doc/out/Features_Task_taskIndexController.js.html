@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Features/Common/commonServices.js</title>
+    <title>JSDoc: Source: Features/Task/taskIndexController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Features/Common/commonServices.js</h1>
+    <h1 class="page-title">Source: Features/Task/taskIndexController.js</h1>
 
     
 
@@ -26,79 +26,69 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module CommonServices
- *
- * @description This Module defines custom Services to use in the whole application
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @memberOf angular_module
+ * @description This Module contains the list of all tasks.
+ * Its possible to either view only personal tasks or to view all tasks from others
  *
  * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
  */
-angular.module("CommonServices", [])
-    /**
-     * @description This service provides a generic modal Dialog. It should be used to show a simple dialog.
-     *
-     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
-     * @function service
-     * @param {string} "ModalDialog" Identifier
-     * @param {string} "$modal" Injection
-     * @param {function} function($modal)
-     *
-     * @example var modalOptions = {
-     *      headerText: 'Erfolg',
-            bodyText: 'Das Meetings wurde erfolgreich beendet!'
+
+
+angular.module("Task", [])
+/**
+ * @class angular_module.Task.TaskIndexCtrl
+ */
+    .controller('TaskIndexCtrl', ['$scope', '$rootScope', '$location', '$resource', "breadcrumbs", "MeetingResourceHelper", "TaskResourceHelper", "CommonHelperMethods",
+        function ($scope, $rootScope, $location, $resource, breadcrumbs, MeetingResourceHelper, TaskResourceHelper, CommonHelperMethods) {
+            console.log("Task Index Controller Loaded")
+            /**@memberOf angular_module.Task.TaskIndexCtrl*/
+            $scope.breadcrumbs = breadcrumbs;
+            /**@memberOf angular_module.Task.TaskIndexCtrl*/
+            $scope.loading = true;
+            /**
+             * @function
+             * @memberOf angular_module.Task.TaskIndexCtrl
+             * @description Fetches all Tasks from backend and reload Tasks.
+             */
+            $scope.reloadTasks = function () {
+                $scope.taskList = [];
+
+                    TaskResourceHelper.getTaskList($scope.showAllTasks).query(function (data) {
+                        angular.forEach(data, function (task) {
+                            task.dueDate = CommonHelperMethods.getDateFromJSONString(task.dueDate);
+                        });
+                        $scope.taskList = data;
+                        $scope.showAllTasksCheckboxDisabled = false;
+                        $scope.loading= false;
+
+                    }, function (err) {
+                        alert('request failed');
+                    });
+
+
             };
-     var modalDefaults = {
-            templateUrl: '/template/modaldialog/success.html'
+            $scope.showAllTasks = false;
+            if ($location.url() == "/task/others")
+                $scope.showAllTasks = true;
+
+            $scope.$watch("showAllTasks", function (newVal) {
+                $scope.showAllTasksCheckboxDisabled = true;
+                $scope.reloadTasks();
+            })
+
+            /**
+             * @function
+             * @memberOf angular_module.Task.TaskIndexCtrl
+             * @description Get the name of selected Task from backend. Sets the name of selected Task
+             * @param {object} task Selected Task
+             */
+            function getMeetingName(task) {
+                MeetingResourceHelper.getMeetingDetail(task.meeting).get(function (data) {
+                    task.meeting = data.title
+                });
             };
-     ModalDialog.showModal(modalDefaults, modalOptions);
-     */
-    .service('ModalDialog', ['$modal',
-        function ($modal) {
-
-            var modalDefaults = {
-                backdrop: true,
-                keyboard: true,
-                modalFade: true,
-                templateUrl: '/template/modaldialog/index.html'
-
-            };
-
-            var modalOptions = {
-                closeButtonText: 'CLOSE',
-                actionButtonText: 'OK',
-                headerText: 'HEADER',
-                bodyText: 'BODY'
-            };
-
-            this.showModal = function (customModalDefaults, customModalOptions) {
-                if (!customModalDefaults) customModalDefaults = {};
-                customModalDefaults.backdrop = 'static';
-                return this.show(customModalDefaults, customModalOptions);
-            };
-
-            this.show = function (customModalDefaults, customModalOptions) {
-                var tempModalDefaults = {};
-                var tempModalOptions = {};
-
-                angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
-
-                angular.extend(tempModalOptions, modalOptions, customModalOptions);
-
-                if (!tempModalDefaults.controller) {
-                    tempModalDefaults.controller = function ($scope, $modalInstance) {
-                        $scope.modalOptions = tempModalOptions;
-                        $scope.modalOptions.ok = function (result) {
-                            $modalInstance.close(result);
-                        };
-                        $scope.modalOptions.close = function (result) {
-                            $modalInstance.dismiss('cancel');
-                        };
-                    }
-                }
-
-                return $modal.open(tempModalDefaults).result;
-            };
-
         }]);
 
 </code></pre>

@@ -324,7 +324,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
 
 <div class="description">
-    Changes the output for the Task Status.
+    Changes the HTML-output for the Task Status.
 </div>
 
 
@@ -489,7 +489,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
 
 <div class="description">
-    Changes the output for the Meeting Status.
+    Changes the HTML-output for the Meeting Status.
 </div>
 
 
@@ -647,14 +647,14 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
     
 
-    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("timedClick", function())</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("invitationStatus", function())</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    This directive is used, to add optimize the double-click/tap-behavior
+    Changes the HTML-Output for the Invitation Status.
 </div>
 
 
@@ -690,7 +690,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
         <tr>
             
-                <td class="name"><code>"timedClick"</code></td>
+                <td class="name"><code>"invitationStatus"</code></td>
             
 
             <td class="type">
@@ -776,7 +776,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line153">line 153</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line115">line 115</a>
     </li></ul></dd>
     
 
@@ -803,7 +803,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>&lt;td timed-click="true">&lt;/td></code></pre>
+    <pre class="prettyprint"><code>&lt;td invitation-status="true">&lt;/td></code></pre>
 
 
 
@@ -977,14 +977,14 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
     
 
-    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("invitationStatus", function())</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("timedClick", function())</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Changes the HTML-Output for the Invitation Status.
+    This directive is used, to add optimize the double-click/tap-behavior
 </div>
 
 
@@ -1020,7 +1020,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
         <tr>
             
-                <td class="name"><code>"invitationStatus"</code></td>
+                <td class="name"><code>"timedClick"</code></td>
             
 
             <td class="type">
@@ -1106,7 +1106,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line115">line 115</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1133,7 +1133,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>&lt;td invitation-status="true">&lt;/td></code></pre>
+    <pre class="prettyprint"><code>&lt;td timed-click="true">&lt;/td></code></pre>
 
 
 
@@ -1153,13 +1153,13 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.reloadMeetingData.html">reloadMeetingData</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 17:41:40 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 19:42:07 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
