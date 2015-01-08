@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Common/commonDirectives.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Common/commonDirectives.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module CommonDirectives
+ *
+ * @description This Module defines Directives for changing the HTML Output
+ *
+ * Use it as HTML-Tags
+ * Examples:
+ * &lt;td task-status="true">&lt;/td>
+ *
+ * Note: Specify a value the attributes to fulfill the XHTML Standard
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
+
+
+angular.module("CommonDirectives", [])
+
+    /**
+     * Retrieves JSON person data from by given entity identifier.
+     *
+     * @example
+     *        &lt;div oa-person-resolver="someScopeVariable.identity as person">
+     *          {{person.name.firstName}} {{person.name.lastName}}
+     *        &lt;/div>
+     * @author Oliver Hader &lt;oliver@typo3.org>
+     * @function directive
+     * @param  {string} "oaPersonResolver" Identifier
+     * @param {function} function($parse,$http)
+     * @note Scoping in AngularJS' modal windows is tricky and won't work out of the box!
+     */
+    .directive('oaPersonResolver', function($parse, $http) {
+        function resolveScope(scope, attr) {
+            var resolvedScope = null;
+
+            if (attr.oaScope) {
+                resolvedScope = $parse(attr.oaScope)(scope);
+            }
+            if (!resolvedScope) {
+                resolvedScope = scope;
+            }
+
+            return resolvedScope;
+        }
+
+        function parseComponents(expression) {
+            var matches = expression.match(/^(.+) as (.+)$/i);
+            if (matches !== null) {
+                return {
+                    source: matches[1],
+                    target: matches[2]
+                };
+            }
+            if (console) {
+                console.error('oaPersonResolver expression "' + expression +'" did not match expected format "&lt;source> as &lt;target>');
+                return null;
+            }
+        }
+
+        return {
+            link: function(scope, element, attr) {
+                var $scope = resolveScope(scope, attr);
+                var components = parseComponents(attr.oaPersonResolver);
+                if (components === null) {
+                    return;
+                }
+                $http.get('person/' + $parse(components.source)($scope) + '/show.json')
+                    .success(function(person) {
+                        $scope[components.target] = person;
+                    });
+            }
+        };
+    })
+    /**
+     * @description Changes the output for the Task Status.
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function directive
+     * @param  {string} "taskStatus" Identifier
+     * @param {function} function()
+     *
+     * @example &lt;td task-status="true">&lt;/td>
+     */
+    .directive('taskStatus', function () {
+
+        return {
+            template: '&lt;span ng-switch="task.status"> ' +
+            '&lt;span ng-switch-when="0">Laufend&lt;/span> ' +
+            '&lt;span ng-switch-when="1">Abgeschlossen&lt;/span> ' +
+            '&lt;span ng-switch-when="2">Abgebrochen&lt;/span> ' +
+            '&lt;span ng-switch-default>Unbekannt&lt;/span> ' +
+            '&lt;/span>'
+        };
+    })
+    /**
+     * @description Changes the output for the Meeting Status.
+     * @author Andreas Weber &lt;andreas.weber@hof-university.de>
+     * @function directive
+     * @param  {string} "meetingStatus" Identifier
+     * @param {function} function()
+     *
+     * @example &lt;td meeting-status="true">&lt;/td>
+     */
+    .directive('meetingStatus', function () {
+
+        return {
+            template: '&lt;span ng-switch="meeting.status"> ' +
+            '&lt;span ng-switch-when="0">Vorgeplant&lt;/span> ' +
+            '&lt;span ng-switch-when="1">Geplant&lt;/span> ' +
+            '&lt;span ng-switch-when="2">Läuft&lt;/span> ' +
+            '&lt;span ng-switch-when="3">Abgeschlossen&lt;/span> ' +
+            '&lt;span ng-switch-when="4">Abgesagt&lt;/span> ' +
+            '&lt;span ng-switch-default>Unbekannt&lt;/span> ' +
+            '&lt;/span>'
+        };
+    })
+    /**
+     * @description Changes the HTML-Output for the Invitation Status.
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function directive
+     * @param  {string} "invitationStatus" Identifier
+     * @param {function} function()
+     *
+     * @example &lt;td invitation-status="true">&lt;/td>
+     */
+    .directive('invitationStatus', function () {
+
+        return {
+            template: '&lt;span ng-switch="invitation.status"> ' +
+            '&lt;span ng-switch-when="0">Ausstehend&lt;/span> ' +
+            '&lt;span ng-switch-when="1">Zugesagt&lt;/span> ' +
+            '&lt;span ng-switch-when="2">Abgesagt&lt;/span> ' +
+            '&lt;/span>'
+        };
+    })
+    /**
+     * @description Changes the mouse pointer to a little hand, if a HTML-element triggers an action.
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function directive
+     * @param  {string} "pointMe" Identifier
+     * @param {function} function()
+     *
+     * @example &lt;td point-me="true">&lt;/td>
+     */
+    .directive("pointMe", function () {
+        return {
+            restrict: "AC",
+            link: function (scope, element, attrs) {
+
+                element.css("cursor", "pointer");
+
+            }
+        };
+    })
+    /**
+     * @description This directive is used, to add optimize the double-click/tap-behavior
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function directive
+     * @param  {string} "timedClick" Identifier
+     * @param {function} function()
+     *
+     * @example &lt;td timed-click="true">&lt;/td>
+    */
+    .directive('timedClick', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attr) {
+                var fn = $parse(attr['timedClick']);
+                var delay = 200, clicks = 0, timer = null;
+                element.on('click', function (event) {
+                    clicks++;  //count clicks
+                    if (clicks === 1) {
+                        timer = setTimeout(function () {
+                            scope.$apply(function () {
+                                fn(scope, {$event: event});
+                            });
+                            clicks = 0;
+                        }, delay);
+                    } else {
+                        clearTimeout(timer);
+                        clicks = 0;
+                    }
+                });
+            }
+        };
+    }]);
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.reloadMeetingData.html">reloadMeetingData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 17:41:40 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

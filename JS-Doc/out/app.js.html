@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Main Module of OpenAgenda. Injects all needed modules.
+ *
+ * @module App
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ * @author Andreas Weber &lt;andreas.weber@hof-university.de>
+ */
+
+/**
+ * @description Main module for OpenAgenda. Its used to inject all needed Modules and to configure the App. See the example below, how the app configures the route-provider.
+ * @var  Application
+ *
+ * @example Application.config(['$routeProvider',function($routeProvider) {
+         $routeProvider.
+            when('/dashboard', {
+                templateUrl: '/template/dashboard/index.html',
+                controller: 'DashboardCtrl',
+                label: 'Dashboard'
+            }).
+            otherwise({
+                redirectTo: '/dashboard'
+            });
+    }]);
+ */
+var Application = angular.module('OpenAgenda', ['ngRoute', 'ngAnimate','ngResource', 'angularFileUpload','ng-breadcrumbs', 'xeditable', 'autocomplete',
+    'ApplicationControllers','CommonFactories','CommonDirectives', 'CommonServices', 'TopBar','Dashboard', 'Menu','Meeting', 'Task','OpenAgenda.Data', 'Setting', 'Http', 'ngSanitize',
+    'ui.calendar','ui.bootstrap']);
+
+
+Application.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/dashboard', {
+                templateUrl: '/template/dashboard/index.html',
+                controller: 'DashboardCtrl',
+                label: 'Dashboard'
+            }).
+            when('/meeting', {
+                templateUrl: '/template/meeting/index.html',
+                controller: 'MeetingIndexCtrl',
+                label: 'Meeting Übersicht'
+            }).
+            when('/meeting/new', {
+                templateUrl: '/template/meeting/edit.html',
+                controller: 'MeetingEditCtrl',
+                label: 'Meeting anlegen'
+            }).
+            when('/meeting/show/:meetingId', {
+                templateUrl: '/template/meeting/edit.html',
+                controller: 'MeetingEditCtrl',
+                label: 'Meeting bearbeiten'
+            }).
+            when('/meeting/start/:meetingId', {
+                templateUrl: '/template/meeting/Execute.html',
+                controller: 'MeetingExecuteCtrl',
+                label: 'Meeting durchführen'
+            }).
+            when('/task', {
+                label:'Aufgaben'
+            }).
+            when('/task/others', {
+                templateUrl: '/template/task/index.html',
+                controller: 'TaskIndexCtrl',
+                label:'Aufgaben Anderer'
+            }).
+            when('/task/mine', {
+                templateUrl: '/template/task/index.html',
+                controller: 'TaskIndexCtrl',
+                label:'Meine Aufgaben'
+            }).
+            when('/task/show/:taskId', {
+                templateUrl: '/template/task/show.html',
+                controller: 'Aufgabe bearbeiten'
+            }).
+            when('/calendar', {
+                templateUrl: '/template/calendar/index.html',
+                controller: 'CalendarCtrl'
+            }).
+            when('/calendar/show/:eventId', {
+                templateUrl: '/template/calendar/show.html',
+                controller: 'CalendarDetailCtrl'
+            }).
+            when('/settings/user', {
+                templateUrl: '/template/setting/Setting.html',
+                controller: 'userSettingCtrl',
+                label:'Benachrichtigungseinstellung'
+            }).
+            when('/settings/user/profile', {
+                templateUrl: '/template/setting/Profile.html',
+                controller: 'userProfileCtrl',
+                label:'Profilverwaltung'
+            }).
+            otherwise({
+                redirectTo: '/dashboard'
+            });
+    }]);
+
+/*Required for xeditable Library*/
+Application.run(function(editableOptions) {
+    editableOptions.theme = 'bs3';
+});
+
+Application.run(function($rootScope, ModalDialog, Help) {
+    $rootScope.help = Help;
+
+});
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.reloadMeetingData.html">reloadMeetingData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 17:41:40 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
