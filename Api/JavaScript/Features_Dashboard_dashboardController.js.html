@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Dashboard/dashboardController.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Dashboard/dashboardController.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class angular_module.Dashboard
+ * @memberOf angular_module
+ * @description This Module defines the Dashboard
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
+
+angular.module("Dashboard", [])
+    /**
+     * @class angular_module.Dashboard.DashboardCtrl
+     */
+    .controller('DashboardCtrl', ['$scope', '$rootScope', '$resource', "breadcrumbs", "MeetingResourceHelper", 'TaskResourceHelper', 'CommonHelperMethods', 'CommonResourceHelper', 'ModalDialog',
+        function ($scope, $rootScope, $http, breadcrumbs, MeetingResourceHelper, TaskResourceHelper, CommonHelperMethods, CommonResourceHelper, ModalDialog) {
+            console.log("Dashboard Controller loaded");
+
+            //Init
+            $scope.breadcrumbs = breadcrumbs;
+            $scope.upcomingMeetings = [];
+
+            $scope.events = [];
+            /**
+             * @memberOf angular_module.Dashboard.DashboardCtrl
+             */
+            $scope.personalInfos = CommonResourceHelper.getPersonalInfos().get(function () {
+                $scope.currentUser = $scope.personalInfos.person.name.firstName;
+            });
+
+            /**
+             * @memberOf angular_module.Dashboard.DashboardCtrl
+             */
+            $scope.meetingList = MeetingResourceHelper.getMeetingList().query(function () {
+                angular.forEach($scope.meetingList, function (meeting) {
+                    meeting.scheduledStartDate = CommonHelperMethods.getDateFromJSONString(meeting.scheduledStartDate);
+                    $scope.events.push({
+                        title: meeting.title,
+                        start: new Date(meeting.scheduledStartDate),
+                        __identity: meeting.__identity,
+                        type: 'Meeting'
+                    });
+
+                });
+                $scope.findUpcomingMeetings($scope.meetingList);
+
+            }, function (err) {
+                alert('request failed');
+            });
+
+            /**
+             * @function reloadTasks
+             * @memberOf angular_module.Dashboard.DashboardCtrl
+             * @description Reload Tasks. Reloads all of the users Tasks.
+             */
+            $scope.reloadTasks = function () {
+                $scope.needToBeDoneTasks = TaskResourceHelper.getTaskList(false).query(function (data) {
+                    angular.forEach($scope.needToBeDoneTasks, function (task) {
+                        $scope.events.push({
+                            title: task.title,
+                            start: new Date(task.dueDate),
+                            __identity: task.__identity,
+                            type: 'Task'
+                        })
+                    });
+                }, function (err) {
+                    alert('request failed');
+                });
+            };
+            $scope.reloadTasks();
+
+            /**
+             * @function findUpcomingMeetings
+             * @memberOf angular_module.Dashboard.DashboardCtrl
+             * @description Get new Meetings
+             */
+            $scope.findUpcomingMeetings = function (meetingList) {
+                //search for upcoming Meetings
+                var now = new Date();
+                angular.forEach(meetingList, function (meeting) {
+                    if (now &lt;= meeting.scheduledStartDate) {
+                        $scope.upcomingMeetings.push(meeting);
+                    }
+                });
+            };
+            /**
+             * @function getNotifications
+             * @memberOf angular_module.Dashboard.DashboardCtrl
+             * @description Get all Notifications from $rootScope
+             */
+            $scope.getNotifications = function () {
+                return $rootScope.notifications;
+            };
+            //$rootScope.changeToolBar("&lt;div>IF NEEDED TOOLBAR&lt;/div>");
+        }])
+
+    /**
+     * @description Controller especially for the Calendar in the Dashboard
+     *   Due to a bug in the Library only meetings of the current view are shown in the Calendar
+     * @class angular_module.Dashboard.DashboardCalendarCtrl
+     *
+     * @author Andreas Weber &lt;andreas.weber@hof-university.de>
+     * @memberOf angular_module.Dashboard
+     */
+     .controller('DashboardCalendarCtrl', ['$scope', '$compile', "uiCalendarConfig", '$location',
+        function ($scope, $compile, uiCalendarConfig, $location) {
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+
+            /* Alert on eventClick */
+            $scope.alertOnEventClick = function (date, jsEvent, view) {
+                if (date.type == 'Meeting') {
+                    // Meeting anzeigen
+                    $location.path('meeting/show/' + date.__identity).replace();
+                } else if (date.type == 'Task') {
+                    angular.forEach($scope.needToBeDoneTasks, function (task) {
+                        if (task.__identity == date.__identity)
+                            $scope.$parent.open("", task);
+                    });
+                } else {
+                    // Fehler
+                }
+            };
+            /* Alert on Drop */
+            $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
+                $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+            };
+            /* Alert on Resize */
+            $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
+                $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
+            };
+            /* Add and removes an event source of choice */
+            $scope.addRemoveEventSource = function (sources, source) {
+                var canAdd = 0;
+                angular.forEach(sources, function (value, key) {
+                    if (sources[key] === source) {
+                        sources.splice(key, 1);
+                        canAdd = 1;
+                    }
+                });
+                if (canAdd === 0) {
+                    sources.push(source);
+                }
+            };
+
+            /* Change View */
+            $scope.changeView = function (view, calendar) {
+                uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
+            };
+            /* Change View */
+            $scope.renderCalender = function (calendar) {
+                if (uiCalendarConfig.calendars[calendar]) {
+                    uiCalendarConfig.calendars[calendar].fullCalendar('render');
+                }
+            };
+            /* Render Tooltip */
+            $scope.eventRender = function (event, element, view) {
+                element.attr({
+                    'tooltip': event.title,
+                    'tooltip-append-to-body': true
+                });
+                $compile(element)($scope);
+            };
+            $scope.locale = "de";
+            /* Config object */
+            $scope.uiConfig = {
+                calendar: {
+                    height: 450,
+                    editable: false,
+                    firstDay: 1,
+                    header: {
+                        left: 'title',
+                        center: '',
+                        right: ''
+                    },
+                    eventClick: $scope.alertOnEventClick,
+                    eventDrop: $scope.alertOnDrop,
+                    eventResize: $scope.alertOnResize,
+                    eventRender: $scope.eventRender
+                }
+            };
+
+            $scope.changeLang = function () {
+                $scope.uiConfig.calendar.dayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+                $scope.uiConfig.calendar.dayNamesShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+
+            };
+            $scope.changeTo = "German";
+            $scope.changeLang();
+
+            $scope.eventSources = [$scope.events];
+        }]);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.reloadMeetingData.html">reloadMeetingData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 17:41:40 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

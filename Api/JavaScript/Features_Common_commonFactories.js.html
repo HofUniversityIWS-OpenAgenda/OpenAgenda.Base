@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Common/commonFactories.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Common/commonFactories.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module CommonFactories
+ *
+ * @description This Module defines custom Factories to use in the whole application
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
+
+angular.module("CommonFactories", [])
+    /**
+     * @description Converts the date string, which is delivered from backend.
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function factory
+     * @param {string} "CommonHelperMethods" Identifier
+     * @param {function} function()
+     * @deprecated Not used anymore
+     */
+    .factory('CommonHelperMethods', function () {
+        return {
+            getDateFromJSONString: function (string) {
+                return new Date(string);
+            }
+        };
+    })
+    /**
+     * @description Gets the user's personal infos as an $resource object.
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function factory
+     * @param {string} "CommonResourceHelper" Identifier
+     * @param {string} '$resource'
+     * @param {function} function($resource)
+     * @returns {resource} infos
+     *
+     * @example  $scope.personalInfos = CommonResourceHelper.getPersonalInfos().get(function () {
+                $scope.currentUser = $scope.personalInfos.person.name.firstName;
+            });
+     */
+    .factory('CommonResourceHelper', ['$resource', function ($resource) {
+        return {
+            getPersonalInfos: function () {
+                return $resource('dashboard/index.json', {}, {
+                    get: {method: 'GET'}
+                });
+            }
+        };
+
+    }])
+    /**
+     * @description Gets the all Meetings or one specific Meeting by ID
+     *
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function factory
+     * @param {string} "MeetingResourceHelper" Identifier
+     * @param {string} '$resource'
+     * @param {function} function($resource)
+     * @returns {resource}
+     * @returns {array}
+     */
+    .factory('MeetingResourceHelper', ['$resource', function ($resource) {
+        return {
+            getMeetingList: function () {
+                return $resource('meeting/list.json', {}, {
+                    query: {method: 'GET', isArray: true}
+                });
+            },
+            getMeetingDetail: function (id) {
+                return $resource('meeting/:meetingId/show.json', {meetingId: id}, {
+                    get: {method: 'GET'}
+                });
+            }
+        };
+
+    }])
+    /**
+     * @description Gets mine or all others Tasks. Also returns details of a specific Task by ID
+     *
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function factory
+     * @param {string} "TaskResourceHelper" Identifier
+     * @param {string} '$resource'
+     * @param {function} function($resource)
+     * @returns {function} getTaskList
+     * @returns {function} getMyTaskList
+     * @returns {function} getOthresTaskList
+     * @returns {function} getTaskDetail
+     */
+    .factory('TaskResourceHelper', ['$resource', function ($resource) {
+        return {
+            getTaskList: function (all) {
+                if(all)
+                    return $resource('task/listothers.json', {}, {
+                        query: {method: 'GET', isArray: true}
+                });
+                else
+                    return $resource('task/listmine.json', {}, {
+                        query: {method: 'GET', isArray: true}
+                    });
+            },
+            getMyTaskList: function () {
+                return $resource('task/listmine.json', {}, {
+                    query: {method: 'GET', isArray: true}
+                });
+            },
+            getOthresTaskList: function () {
+                return $resource('task/listothres.json', {}, {
+                    query: {method: 'GET', isArray: true}
+                });
+            },
+            getTaskDetail: function (id) {
+                return $resource('task/:taskId/show.json', {taskId: id}, {
+                    get: {method: 'GET'}
+                });
+            }
+        };
+    }])
+    /**
+     * @description This Method is used to indicate the Help feature in this version of OpenAgenda.
+     *
+     * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+     * @function factory
+     * @param {string} "Help" Identifier
+     * @param {string} '$location'
+     * @param {string} '$ModalDialog'
+     * @param {function} '$ModalDialog'
+     * @returns {function} show
+     */
+    .factory('Help', ['$location','ModalDialog', function ($location, ModalDialog) {
+        return {
+            show: function (){
+                var path = $location.path();
+                var url = '/template/modaldialog/generichelp.html';
+
+                if("/dashboard" == path)
+                    url = '/template/modaldialog/generichelp.html';
+                if("/meeting" == path)
+                    url = '/template/modaldialog/generichelp.html';
+
+                var modalDefaults = {
+                        templateUrl: url
+                };
+                ModalDialog.showModal(modalDefaults, {});
+            }
+        };
+    }]);
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.reloadMeetingData.html">reloadMeetingData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 17:41:40 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
