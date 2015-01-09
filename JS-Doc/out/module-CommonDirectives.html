@@ -38,12 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">This Module defines Directives for changing the HTML Output
-
-Use it as HTML-Tags
-Examples:
-<td task-status="true"></td>
-
+            <div class="description">This Module defines Directives for changing the HTML Output. Use it as HTML-Tags.
 Note: Specify a value the attributes to fulfill the XHTML Standard</div>
         
 
@@ -123,6 +118,11 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;td task-status="true">&lt;/td></code></pre>
 
 
 
@@ -279,7 +279,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line18">line 18</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -446,7 +446,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line73">line 73</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -611,7 +611,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line93">line 93</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -776,7 +776,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line115">line 115</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line112">line 112</a>
     </li></ul></dd>
     
 
@@ -819,7 +819,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
 
 <div class="description">
-    Changes the mouse pointer to a little hand, if a HTML-element triggers an action.
+    Changes the mouse pointer to a little hand, if a HTML-element triggers and action an has no href.
 </div>
 
 
@@ -941,7 +941,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line134">line 134</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -977,14 +977,14 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
     
 
-    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("timedClick", function())</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~directive"><span class="type-signature">(inner) </span>directive<span class="signature">("timedClick", "$parse", function($parse))</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    This directive is used, to add optimize the double-click/tap-behavior
+    This directive is used, to add optimization the double-click/tap-behavior
 </div>
 
 
@@ -1043,7 +1043,30 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 
         <tr>
             
-                <td class="name"><code>function()</code></td>
+                <td class="name"><code>"$parse"</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Injection</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>function($parse)</code></td>
             
 
             <td class="type">
@@ -1106,7 +1129,7 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line153">line 153</a>
+        <a href="Features_Common_commonDirectives.js.html">Features/Common/commonDirectives.js</a>, <a href="Features_Common_commonDirectives.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -1153,13 +1176,13 @@ Note: Specify a value the attributes to fulfill the XHTML Standard</div>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 19:42:07 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 14:09:28 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>

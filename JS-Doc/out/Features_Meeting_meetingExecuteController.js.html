@@ -52,6 +52,7 @@ angular.module("Meeting")
              *
              * @function
              * @memberOf angular_module.Meeting.MeetingExecuteCtrl
+             * @description Fetches the Data from Server and replaces the local Data. Its used to synchronize the Data between the meeting attendees.
              */
             function reloadMeetingData() {
                 MeetingResourceHelper.getMeetingDetail($routeParams.meetingId).get(function (data) {
@@ -93,7 +94,14 @@ angular.module("Meeting")
                     sendMeetingData(x, 'Beim Übertragen der Daten ist ein Fehler aufgetreten!');
 
             };
-
+            /**
+             *
+             * @function
+             * @memberOf angular_module.Meeting.MeetingExecuteCtrl
+             * @param {object} meeting The Meeting to send
+             * @param {string} bodyText The Message to display on error.
+             * @description Sends the Meetingdata to the server. Displays a modal Dialog if something went wrong.
+             */
             function sendMeetingData(meeting, bodyText) {
                 $http.post('meeting/update.json', {meeting: meeting}, {proxy: true}).
                     success(function (data, status, headers, config) {
@@ -111,7 +119,13 @@ angular.module("Meeting")
                         ModalDialog.showModal(modalDefaults, modalOptions);
                     });
             }
-
+            /**
+             *
+             * @function
+             * @memberOf angular_module.Meeting.MeetingExecuteCtrl
+             * @param {int} sorting The number of the AgendaItem
+             * @description Returns Protocolitem for a AgendaPoint. If the AgendaPoint has no Protocolitem a new one is created.
+             */
             $scope.getProtocolItem = function (sorting) {
                 var found = false;
                 for (var i = 0; i &lt; $scope.meeting.protocolItems.length; i++) {
@@ -134,6 +148,10 @@ angular.module("Meeting")
                 }
             };
 
+            /**
+             *
+             * @constructor
+             */
             function TaskItem(count) {
                 this.status = 0;
             }
@@ -346,13 +364,13 @@ angular.module("Meeting")
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 19:42:07 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 14:09:28 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -209,14 +209,14 @@ Not used in this version
 
     
 
-    <h4 class="name" id=".$rootScope.changeToolBar"><span class="type-signature">(static) </span>$rootScope.changeToolBar<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$rootScope.changeToolBar"><span class="type-signature">(static) </span>$rootScope.changeToolBar<span class="signature">(htmlCode)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Change the HTML in the left Toolbar
+    Change the HTML in the left Toolbar.
 </div>
 
 
@@ -226,6 +226,54 @@ Not used in this version
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>htmlCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">HtmlCode for ToolBar</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -260,7 +308,7 @@ Not used in this version
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line29">line 29</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -291,14 +339,14 @@ Not used in this version
 
     
 
-    <h4 class="name" id=".$scope.insertToolbar"><span class="type-signature">(static) </span>$scope.insertToolbar<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.insertToolbar"><span class="type-signature">(static) </span>$scope.insertToolbar<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    Insert new Toolbar as HTML in the left Toolbar
+    Returns new Toolbar as trusted HTML.
 </div>
 
 
@@ -342,7 +390,7 @@ Not used in this version
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line37">line 37</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -365,6 +413,28 @@ Not used in this version
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Trusted HTML
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -373,14 +443,14 @@ Not used in this version
 
     
 
-    <h4 class="name" id=".$scope.isActive"><span class="type-signature">(static) </span>$scope.isActive<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.isActive"><span class="type-signature">(static) </span>$scope.isActive<span class="signature">(active)</span><span class="type-signature"> &rarr; {bool}</span></h4>
 
     
 
 
 
 <div class="description">
-    Set the active Menu item
+    Set the active Menu item in the left menu.
 </div>
 
 
@@ -390,6 +460,54 @@ Not used in this version
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An URL</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -424,7 +542,7 @@ Not used in this version
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line46">line 46</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -447,6 +565,28 @@ Not used in this version
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    active
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">bool</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -466,13 +606,13 @@ Not used in this version
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 08 2015 19:42:07 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 14:09:28 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
