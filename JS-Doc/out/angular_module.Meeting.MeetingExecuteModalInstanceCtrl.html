@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserProfileCtrl</title>
+    <title>JSDoc: Class: MeetingExecuteModalInstanceCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserProfileCtrl</h1>
+    <h1 class="page-title">Class: MeetingExecuteModalInstanceCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Setting.html">.Setting</a>.</span>
+            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a>.</span>
         
-        UserProfileCtrl
+        MeetingExecuteModalInstanceCtrl
         </h2>
         
     
@@ -46,12 +46,15 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="UserProfileCtrl"><span class="type-signature"></span>new UserProfileCtrl<span class="signature">($scope, $http, oaUtility, ModalDialog, breadcrumbs)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="MeetingExecuteModalInstanceCtrl"><span class="type-signature"></span>new MeetingExecuteModalInstanceCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
+<div class="description">
+    This controller is used to handle the modal view to view and change a tasks state
+</div>
 
 
 
@@ -60,145 +63,6 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>$scope</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>$http</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>oaUtility</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ModalDialog</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>breadcrumbs</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -223,6 +87,13 @@
     
 
     
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:thomas.winkler@hof-university.de">Thomas Winkler</a></li>
+        </ul>
+    </dd>
+    
 
     
 
@@ -233,7 +104,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Setting_userProfileController.js.html">Features/Setting/userProfileController.js</a>, <a href="Features_Setting_userProfileController.js.html#line11">line 11</a>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line377">line 377</a>
     </li></ul></dd>
     
 
@@ -282,14 +153,14 @@
 
     
 
-    <h4 class="name" id=".$scope.persist"><span class="type-signature">(static) </span>$scope.persist<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.cancel"><span class="type-signature">(static) </span>$scope.cancel<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Saves the user data and sends them to the server.
+    Sends the string "DISMISS" to the MeetingExecuteModalCtrl. Is fired is someone presses the Cancel button
 </div>
 
 
@@ -333,7 +204,89 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Setting_userProfileController.js.html">Features/Setting/userProfileController.js</a>, <a href="Features_Setting_userProfileController.js.html#line36">line 36</a>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line399">line 399</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.ok"><span class="type-signature">(static) </span>$scope.ok<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Sends the string "OK" to the MeetingExecuteModalCtrl. Is fired is someone presses the OK button
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line391">line 391</a>
     </li></ul></dd>
     
 

@@ -39,6 +39,18 @@ angular.module("Dashboard", [])
      * @class angular_module.Dashboard.DashboardCtrl
      */
     .controller('DashboardCtrl', ['$scope', '$rootScope', '$resource', "breadcrumbs", "MeetingResourceHelper", 'TaskResourceHelper', 'CommonHelperMethods', 'CommonResourceHelper', 'ModalDialog',
+        /**
+         *
+         * @param $scope
+         * @param $rootScope
+         * @param $http
+         * @param breadcrumbs
+         * @param MeetingResourceHelper
+         * @param TaskResourceHelper
+         * @param CommonHelperMethods
+         * @param CommonResourceHelper
+         * @param ModalDialog
+         */
         function ($scope, $rootScope, $http, breadcrumbs, MeetingResourceHelper, TaskResourceHelper, CommonHelperMethods, CommonResourceHelper, ModalDialog) {
             console.log("Dashboard Controller loaded");
 
@@ -75,7 +87,7 @@ angular.module("Dashboard", [])
             });
 
             /**
-             * @function reloadTasks
+             * @function
              * @memberOf angular_module.Dashboard.DashboardCtrl
              * @description Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails.
              */
@@ -96,7 +108,7 @@ angular.module("Dashboard", [])
             $scope.reloadTasks();
 
             /**
-             * @function findUpcomingMeetings
+             * @function
              * @param {array} meetingList List fo Meetings
              * @memberOf angular_module.Dashboard.DashboardCtrl
              * @description Collect only new and upcoming meetings.
@@ -111,9 +123,10 @@ angular.module("Dashboard", [])
                 });
             };
             /**
-             * @function getNotifications
+             * @function
              * @memberOf angular_module.Dashboard.DashboardCtrl
              * @description Get all globally stored Notifications from $rootScope
+             * @returns {array} $rootScope.notifications
              */
             $scope.getNotifications = function () {
                 return $rootScope.notifications;
@@ -123,7 +136,7 @@ angular.module("Dashboard", [])
 
     /**
      * @description Controller especially for the Calendar in the Dashboard.
-     *   Due to a bug in the Library only meetings of the current view are shown in the Calendar
+     * Due to a bug in the Library only meetings of the current view are shown in the Calendar
      * @class angular_module.Dashboard.DashboardCalendarCtrl
      *
      * @author Andreas Weber &lt;andreas.weber@hof-university.de>
@@ -136,7 +149,15 @@ angular.module("Dashboard", [])
             var m = date.getMonth();
             var y = date.getFullYear();
 
-            /* Alert on eventClick */
+
+            /**
+             * @function
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @description Redirect to the detail page for the clicked event (in this case Meeting)
+             * @param date {object}
+             * @param jsEvent {object}
+             * @param view {object}
+             */
             $scope.alertOnEventClick = function (date, jsEvent, view) {
                 if (date.type == 'Meeting') {
                     // Meeting anzeigen
@@ -150,15 +171,44 @@ angular.module("Dashboard", [])
                     // Fehler
                 }
             };
-            /* Alert on Drop */
+
+            /**
+             * @function
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @description Alert on Drop. A sample Function, not used in this Version
+             * @param event {object}
+             * @param delta {object}
+             * @param revertFunc {object}
+             * @param jsEvent {object}
+             * @param ui {object}
+             * @param view {object}
+             */
             $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
                 $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
             };
-            /* Alert on Resize */
+
+            /**
+             * @function
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @description Alert on Resize. A sample Function, not used in this Version
+             * @param event {object}
+             * @param delta {object}
+             * @param revertFunc {object}
+             * @param jsEvent {object}
+             * @param ui {object}
+             * @param view {object}
+             */
             $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
                 $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
             };
-            /* Add and removes an event source of choice */
+            /*  */
+            /**
+             * @function
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @description Add and removes an event source of choice
+             * @param sources {object}
+             * @param source {object}
+             */
             $scope.addRemoveEventSource = function (sources, source) {
                 var canAdd = 0;
                 angular.forEach(sources, function (value, key) {
@@ -172,17 +222,37 @@ angular.module("Dashboard", [])
                 }
             };
 
-            /* Change View */
+            /**
+             * @description Change View of Calendar
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @function
+             * @param view {object}
+             * @param calendar {object}
+             */
             $scope.changeView = function (view, calendar) {
                 uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
             };
-            /* Change View */
+
+            /**
+             * @description Render calender after view change
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @function
+             * @param calendar {object}
+             */
             $scope.renderCalender = function (calendar) {
                 if (uiCalendarConfig.calendars[calendar]) {
                     uiCalendarConfig.calendars[calendar].fullCalendar('render');
                 }
             };
-            /* Render Tooltip */
+
+            /**
+             * @description Render tooltip if it is available for the event
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             * @function
+             * @param event {object}
+             * @param element {object}
+             * @param view {object}
+             */
             $scope.eventRender = function (event, element, view) {
                 element.attr({
                     'tooltip': event.title,
@@ -209,6 +279,11 @@ angular.module("Dashboard", [])
                 }
             };
 
+            /**
+             * @function
+             * @description Used to change the Language of the calendar
+             * @memberOf angular_module.Dashboard.DashboardCalendarCtrl
+             */
             $scope.changeLang = function () {
                 $scope.uiConfig.calendar.dayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
                 $scope.uiConfig.calendar.dayNamesShort = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
@@ -229,13 +304,13 @@ angular.module("Dashboard", [])
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalCtrl.html">MeetingExecuteModalCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalInstanceCtrl.html">MeetingExecuteModalInstanceCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 14:11:42 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jan 11 2015 21:30:01 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>

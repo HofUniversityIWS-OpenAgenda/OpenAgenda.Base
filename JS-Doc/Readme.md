@@ -45,7 +45,7 @@ It was created using JSDoc.
     * Profile.html
     * Setting.html
 * **Oliver**
-  * Authentication (nur das Template, keine Flow-Annotations)
+  * Authentication
     * Login.html (Flow Annotations)
     * New.html
     * Create.html

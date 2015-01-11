@@ -127,6 +127,13 @@
     
 
     
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></dt>
+            <dd></dd>
+        </dl>
+    
 
      
 
@@ -378,7 +385,171 @@
 
     
 
-    <h4 class="name" id=".$scope.getProtocolItem"><span class="type-signature">(static) </span>$scope.getProtocolItem<span class="signature">(sorting)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.addTask"><span class="type-signature">(static) </span>$scope.addTask<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Adds a task to the Array. Creates automatically a new Taskitem
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.endMeeting"><span class="type-signature">(static) </span>$scope.endMeeting<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    End the meeting sends a close event to the server
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line246">line 246</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.getProtocolItem"><span class="type-signature">(static) </span>$scope.getProtocolItem<span class="signature">(sorting)</span><span class="type-signature"> &rarr; {object}</span></h4>
 
     
 
@@ -477,7 +648,557 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line101">line 101</a>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    ProtcolItem
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.removeTasks"><span class="type-signature">(static) </span>$scope.removeTasks<span class="signature">(idx)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Removes a Tasks an send an delete event to the server
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>idx</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.sendProtocollItem"><span class="type-signature">(static) </span>$scope.sendProtocollItem<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Sends the changed ProtocollItem to the server
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.sendTaskItem"><span class="type-signature">(static) </span>$scope.sendTaskItem<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Sends the changed TaskItem to the server
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line76">line 76</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.showStatus"><span class="type-signature">(static) </span>$scope.showStatus<span class="signature">(index)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Used to get the  mail address for the assingees
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    mailaddress
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.startMeeting"><span class="type-signature">(static) </span>$scope.startMeeting<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Starts the meeting and prepares the meeting object for the meeting.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -712,7 +1433,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line77">line 77</a>
+        <a href="Features_Meeting_meetingExecuteController.js.html">Features/Meeting/meetingExecuteController.js</a>, <a href="Features_Meeting_meetingExecuteController.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -754,13 +1475,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalCtrl.html">MeetingExecuteModalCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalInstanceCtrl.html">MeetingExecuteModalInstanceCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Fri Jan 09 2015 14:11:43 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Sun Jan 11 2015 21:30:01 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
