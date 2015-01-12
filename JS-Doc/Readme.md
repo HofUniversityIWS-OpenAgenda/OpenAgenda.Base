@@ -6,7 +6,7 @@ It was created using JSDoc.
 **Some information to the structure:**
 
 * All "Features" are marked as Classes.
-* All common things are marked as Modules.
+* All "common things" are marked as Modules.
 * Only imported things are documented currently.
 
 
@@ -15,11 +15,11 @@ It was created using JSDoc.
 **The following list describes who has implemented the specific HTML-Parts of OpenAgenda:**
 
 * **Thomas**
-  * Authentication (nur das Template, keine Flow-Annotations)
+  * Authentication (only template, no Flow annotations)
     * Login.html
   * Dashboard 
     * Index.html
-  * Mail (wird nicht verwendet)
+  * Mail (not used)
     * Mail.html 
     * Mail-Inline.html
   * Meeting
@@ -38,14 +38,14 @@ It was created using JSDoc.
     * Edit.html
 * **Andreas**
   * Meeting
-    * Edit.html (Edit-Rechte)
-    * Excecute.html (Angular-Annotations)
+    * Edit.html (Edit-Rights)
+    * Excecute.html (Angular annotations)
     * ExecuteModal.html
   * Setting
     * Profile.html
     * Setting.html
 * **Oliver**
   * Authentication
-    * Login.html (Flow Annotations)
+    * Login.html (Flow annotations)
     * New.html
     * Create.html
