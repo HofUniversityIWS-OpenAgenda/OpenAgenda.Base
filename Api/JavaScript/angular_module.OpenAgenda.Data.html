@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Meeting</title>
+    <title>JSDoc: Class: Data</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Meeting</h1>
+    <h1 class="page-title">Class: Data</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
+            <span class="ancestors"><a href="angular_module.OpenAgenda.html">.OpenAgenda</a>.</span>
         
-        Meeting
+        Data
         </h2>
         
     
@@ -46,11 +46,22 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Meeting"><span class="type-signature"></span>new Meeting<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Data"><span class="type-signature"></span>new Data<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    Data transfer layer and HTTP interception methods.
+
+<p>
+This module keeps track of failed HTTP requests using the accordant HTTP interceptor
+for each scope. Scopes in this regard are "fetchAll", "fetch", "save" and "remove", thus
+the typical CRUD actions. The data stores are temporarily persisted in the browser's
+local storage.
+</p>
+</div>
 
 
 
@@ -81,7 +92,16 @@
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>The OpenAgenda.Data module is experimental and currently not used at all!</li></ul></dd>
+    
 
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:oliver@typo3.org">Oliver Hader</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -93,7 +113,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line49">line 49</a>
+        <a href="Features_Common_data.js.html">Features/Common/data.js</a>, <a href="Features_Common_data.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -118,6 +138,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>OpenAgenda.Data.MeetingStore.fetchAll().then(function(data) { });</code></pre>
+
+
 
     
     </div>
@@ -126,6 +151,28 @@
 
     
 
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="angular_module.OpenAgenda.Data.Interceptor.html">Interceptor</a></dt>
+            <dd></dd>
+        
+            <dt><a href="angular_module.OpenAgenda.Data.LocalStorage.html">LocalStorage</a></dt>
+            <dd></dd>
+        
+            <dt><a href="angular_module.OpenAgenda.Data.MeetingStore.html">MeetingStore</a></dt>
+            <dd></dd>
+        
+            <dt><a href="angular_module.OpenAgenda.Data.Store.html">Store</a></dt>
+            <dd></dd>
+        
+            <dt><a href="angular_module.OpenAgenda.Data.Store.html">Store</a></dt>
+            <dd></dd>
+        
+            <dt><a href="angular_module.OpenAgenda.Data.TaskStore.html">TaskStore</a></dt>
+            <dd></dd>
+        </dl>
     
 
      
