@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DashboardCtrl</title>
+    <title>JSDoc: Class: TopBarCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DashboardCtrl</h1>
+    <h1 class="page-title">Class: TopBarCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Dashboard.html">.Dashboard</a>.</span>
+            <span class="ancestors"><a href="angular_module.TopBar.html">.TopBar</a>.</span>
         
-        DashboardCtrl
+        TopBarCtrl
         </h2>
         
     
@@ -46,7 +46,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="DashboardCtrl"><span class="type-signature"></span>new DashboardCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TopBarCtrl"><span class="type-signature"></span>new TopBarCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line10">line 10</a>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -137,68 +137,14 @@
 
         
             
-<h4 class="name" id=".$scope.meetingList"><span class="type-signature">(static) </span>$scope.meetingList<span class="type-signature"></span></h4>
+<h4 class="name" id=".$rootScope.notifications"><span class="type-signature">(static) </span>$rootScope.notifications<span class="type-signature"></span></h4>
 
 
 
 
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".$scope.personalInfos"><span class="type-signature">(static) </span>$scope.personalInfos<span class="type-signature"></span></h4>
-
-
-
+<div class="description">
+    Globally stored notifications
+</div>
 
 
 
@@ -235,7 +181,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line37">line 37</a>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -262,14 +208,14 @@
 
     
 
-    <h4 class="name" id=".$scope.findUpcomingMeetings"><span class="type-signature">(static) </span>$scope.findUpcomingMeetings<span class="signature">(meetingList)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.acceptInvitation"><span class="type-signature">(static) </span>$scope.acceptInvitation<span class="signature">(id)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Collect only new and upcoming meetings.
+    Is used to accept a certain Meeting. Displays a modal dialog after success or error.
 </div>
 
 
@@ -305,13 +251,13 @@
 
         <tr>
             
-                <td class="name"><code>meetingList</code></td>
+                <td class="name"><code>id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
             
@@ -321,7 +267,7 @@
 
             
 
-            <td class="description last">List fo Meetings</td>
+            <td class="description last">ID of Meeting</td>
         </tr>
 
     
@@ -361,7 +307,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line88">line 88</a>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -392,14 +338,222 @@
 
     
 
-    <h4 class="name" id=".$scope.getNotifications"><span class="type-signature">(static) </span>$scope.getNotifications<span class="signature">()</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id=".$scope.declineInvitation"><span class="type-signature">(static) </span>$scope.declineInvitation<span class="signature">(id)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Get all globally stored Notifications from $rootScope
+    Is used to decline a certain Meeting. Displays a modal dialog after success or error.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of Meeting</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".$scope.getNotifications"><span class="type-signature">(static) </span>$scope.getNotifications<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".reloadNotifications"><span class="type-signature">(static) </span>reloadNotifications<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Reload all personal Notifications
 </div>
 
 
@@ -443,111 +597,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line103">line 103</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    $rootScope.notifications
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".$scope.reloadTasks"><span class="type-signature">(static) </span>$scope.reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line66">line 66</a>
+        <a href="Features_TopBar_topBarController.js.html">Features/TopBar/topBarController.js</a>, <a href="Features_TopBar_topBarController.js.html#line29">line 29</a>
     </li></ul></dd>
     
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Meeting</title>
+    <title>JSDoc: Source: Features/Setting/userSettingController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,131 +17,33 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Meeting</h1>
+    <h1 class="page-title">Source: Features/Setting/userSettingController.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
-        
-        Meeting
-        </h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @class angular_module.Setting
+ * @memberOf angular_module
+ *
+ * @author Andreas Weber &lt;andreas.weber@hof-university.de>
+ */
 
-<article>
-    <div class="container-overview">
-    
-        
+angular.module("Setting")
+/**
+ * @class angular_module.Setting.UserSettingCtrl
+ */
+    .controller('userSettingCtrl', ['$scope', '$http', '$rootScope', '$routeParams', '$resource', "breadcrumbs",
+        function($scope, $http, $rootScope, $routeParams, $resource, breadcrumbs){
+            $scope.breadcrumbs = breadcrumbs;
 
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Meeting"><span class="type-signature"></span>new Meeting<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+        }]);</code></pre>
+        </article>
+    </section>
 
 
 

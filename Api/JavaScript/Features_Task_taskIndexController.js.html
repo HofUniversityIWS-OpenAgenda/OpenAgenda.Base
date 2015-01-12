@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Meeting</title>
+    <title>JSDoc: Source: Features/Task/taskIndexController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,131 +17,83 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Meeting</h1>
+    <h1 class="page-title">Source: Features/Task/taskIndexController.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="angular_module.Meeting.html">.Meeting</a><a href="angular_module.Meeting.MeetingEditCtrl.html">.MeetingEditCtrl</a>.</span>
-        
-        Meeting
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Meeting"><span class="type-signature"></span>new Meeting<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @memberOf angular_module
+ * @description This Module contains the list of all tasks.
+ * Its possible to either view only personal tasks or to view all tasks from others.
+ *
+ * @author Thomas Winkler &lt;thomas.winkler@hof-university.de>
+ */
 
 
+angular.module("Task", [])
+/**
+ * @class angular_module.Task.TaskIndexCtrl
+ */
+    .controller('TaskIndexCtrl', ['$scope', '$rootScope', '$location', '$resource', "breadcrumbs", "MeetingResourceHelper", "TaskResourceHelper", "CommonHelperMethods",
+        function ($scope, $rootScope, $location, $resource, breadcrumbs, MeetingResourceHelper, TaskResourceHelper, CommonHelperMethods) {
+            console.log("Task Index Controller Loaded")
+            /**@memberOf angular_module.Task.TaskIndexCtrl*/
+            $scope.breadcrumbs = breadcrumbs;
+            /**@memberOf angular_module.Task.TaskIndexCtrl*/
+            $scope.loading = true;
+            /**
+             * @function
+             * @memberOf angular_module.Task.TaskIndexCtrl
+             * @description Fetches all Tasks from backend and reload Tasks.
+             */
+            $scope.reloadTasks = function () {
+                $scope.taskList = [];
+
+                    TaskResourceHelper.getTaskList($scope.showAllTasks).query(function (data) {
+                        angular.forEach(data, function (task) {
+                            task.dueDate = CommonHelperMethods.getDateFromJSONString(task.dueDate);
+                        });
+                        $scope.taskList = data;
+                        $scope.showAllTasksCheckboxDisabled = false;
+                        $scope.loading= false;
+
+                    }, function (err) {
+                        alert('request failed');
+                    });
 
 
+            };
+            $scope.showAllTasks = false;
+            if ($location.url() == "/task/others")
+                $scope.showAllTasks = true;
 
+            $scope.$watch("showAllTasks", function (newVal) {
+                $scope.showAllTasksCheckboxDisabled = true;
+                $scope.reloadTasks();
+            })
 
+            /**
+             * @function
+             * @memberOf angular_module.Task.TaskIndexCtrl
+             * @description Get the name of selected Task from backend. Sets the name of selected Task.
+             * @param {object} task Selected Task
+             */
+            function getMeetingName(task) {
+                MeetingResourceHelper.getMeetingDetail(task.meeting).get(function (data) {
+                    task.meeting = data.title
+                });
+            };
+        }]);
 
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Meeting_meetingEditController.js.html">Features/Meeting/meetingEditController.js</a>, <a href="Features_Meeting_meetingEditController.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+</code></pre>
+        </article>
+    </section>
 
 
 

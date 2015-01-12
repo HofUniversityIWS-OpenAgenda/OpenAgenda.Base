@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DashboardCtrl</title>
+    <title>JSDoc: Class: MenuCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DashboardCtrl</h1>
+    <h1 class="page-title">Class: MenuCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Dashboard.html">.Dashboard</a>.</span>
+            <span class="ancestors"><a href="angular_module.Menu.html">.Menu</a>.</span>
         
-        DashboardCtrl
+        MenuCtrl
         </h2>
         
     
@@ -46,7 +46,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="DashboardCtrl"><span class="type-signature"></span>new DashboardCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="MenuCtrl"><span class="type-signature"></span>new MenuCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line10">line 10</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -137,68 +137,15 @@
 
         
             
-<h4 class="name" id=".$scope.meetingList"><span class="type-signature">(static) </span>$scope.meetingList<span class="type-signature"></span></h4>
+<h4 class="name" id=".$scope.toolBar"><span class="type-signature">(static) </span>$scope.toolBar<span class="type-signature"></span></h4>
 
 
 
 
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".$scope.personalInfos"><span class="type-signature">(static) </span>$scope.personalInfos<span class="type-signature"></span></h4>
-
-
-
+<div class="description">
+    Should be used to add a Toolbar.
+Not used in this version
+</div>
 
 
 
@@ -235,7 +182,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line37">line 37</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -262,14 +209,14 @@
 
     
 
-    <h4 class="name" id=".$scope.findUpcomingMeetings"><span class="type-signature">(static) </span>$scope.findUpcomingMeetings<span class="signature">(meetingList)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$rootScope.changeToolBar"><span class="type-signature">(static) </span>$rootScope.changeToolBar<span class="signature">(htmlCode)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Collect only new and upcoming meetings.
+    Change the HTML in the left Toolbar.
 </div>
 
 
@@ -305,13 +252,13 @@
 
         <tr>
             
-                <td class="name"><code>meetingList</code></td>
+                <td class="name"><code>htmlCode</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
             
@@ -321,7 +268,7 @@
 
             
 
-            <td class="description last">List fo Meetings</td>
+            <td class="description last">HtmlCode for ToolBar</td>
         </tr>
 
     
@@ -361,7 +308,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line88">line 88</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -392,14 +339,14 @@
 
     
 
-    <h4 class="name" id=".$scope.getNotifications"><span class="type-signature">(static) </span>$scope.getNotifications<span class="signature">()</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id=".$scope.insertToolbar"><span class="type-signature">(static) </span>$scope.insertToolbar<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
 
 
 
 <div class="description">
-    Get all globally stored Notifications from $rootScope
+    Returns new Toolbar as trusted HTML.
 </div>
 
 
@@ -443,7 +390,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line103">line 103</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -470,7 +417,7 @@
 
         
 <div class="param-desc">
-    $rootScope.notifications
+    Trusted HTML
 </div>
 
 
@@ -481,7 +428,7 @@
     </dt>
     <dd>
         
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
     </dd>
@@ -496,14 +443,14 @@
 
     
 
-    <h4 class="name" id=".$scope.reloadTasks"><span class="type-signature">(static) </span>$scope.reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.isActive"><span class="type-signature">(static) </span>$scope.isActive<span class="signature">(active)</span><span class="type-signature"> &rarr; {bool}</span></h4>
 
     
 
 
 
 <div class="description">
-    Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails.
+    Set the active Menu item in the left menu.
 </div>
 
 
@@ -513,6 +460,54 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>active</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An URL</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -547,7 +542,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line66">line 66</a>
+        <a href="Features_Menu_menuController.js.html">Features/Menu/menuController.js</a>, <a href="Features_Menu_menuController.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -570,6 +565,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    active
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">bool</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 

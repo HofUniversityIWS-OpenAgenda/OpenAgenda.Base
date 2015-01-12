@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Features/Common/http.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Features/Common/http.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Http
+ *
+ * @description Http module for capturing requests
+ *
+ * Use the configuration property *proxy* to enable this feature.
+ * The HttpInterceptor takes care of failed requests.
+ * The HttpManager interacts with the HttpQueue to replay requests.
+ * The HttpHeartbeat instance checks the Navigator and Server status.
+ *
+ * Changes to the online status are issued using the $rootScope.
+ * $rootScope.$watch('online', function(newValue, oldValue) { ... });
+ *
+ * @example
+ * $http.get('url', {}, { proxy: true });
+ * $http.get({url: 'url', data: data, proxy: true});
+ *
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
+angular.module('Http', [])
+.run(['$rootScope', 'HttpManager', 'HttpHeartbeat', function($rootScope, HttpManager, HttpHeartbeat) {
+	$rootScope.$watch('online', handleOnline);
+
+	function handleOnline(newValue, oldValue) {
+		if (typeof newValue === 'undefined' || typeof oldValue === 'undefined' || newValue === oldValue) {
+			return;
+		}
+		if (newValue) {
+			HttpManager.manage();
+		}
+	}
+
+	HttpHeartbeat.start();
+}])
+.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.interceptors.push('HttpInterceptor');
+}])
+.factory('HttpManager', ['$rootScope', '$http', 'HttpQueue', function($rootScope, $http, HttpQueue) {
+	function replay(request, proxyId) {
+		request.config.proxyReplay++;
+		$http(request.config);
+	}
+
+	return {
+		manage: function() {
+			angular.forEach(HttpQueue.all(), replay);
+		}
+	}
+}])
+.factory('HttpQueue', function() {
+	var requests = {};
+
+	function getRandomString() {
+		var i, randomString = '';
+		for (i = 0; i &lt; 16; i++) {
+			randomString += Math.floor(Math.random() * 256).toString(16);
+		}
+		return randomString;
+	}
+
+	return {
+		all: function() {
+			return requests;
+		},
+		getRequest: function(proxyId) {
+			return requests[proxyId];
+		},
+		needsHandling: function(config) {
+			return (config.proxy || config.proxyId);
+		},
+		addRequest: function addRequest(config) {
+			if (!config.proxy || config.proxyId &amp;&amp; requests[config.proxyId]) {
+				return false;
+			}
+			config.proxyId = getRandomString();
+			requests[config.proxyId] = {
+				config: config,
+				deferred: null
+			};
+		},
+		setDeferred: function(config, deferred) {
+			if (!config.proxy || !config.proxyId || requests[config.proxyId]['deferred']) {
+				return false;
+			}
+			config.proxyReplay = 0;
+			requests[config.proxyId]['deferred'] = deferred;
+		},
+		removeRequest: function(config, data) {
+			if (!config.proxyId || !requests[config.proxyId]) {
+				return false;
+			}
+			if (requests[config.proxyId]['deferred']) {
+				requests[config.proxyId]['deferred'].resolve(data);
+			}
+			delete requests[config.proxyId];
+		}
+	}
+})
+.factory('HttpHeartbeat', ['$window', '$rootScope', '$http', '$interval', function($window, $rootScope, $http, $interval) {
+	var interval;
+	var serverOnline;
+	var navigatorOnline;
+
+	navigatorOnline = navigator.onLine;
+	$window.addEventListener('online', emitNavigatorChange);
+	$window.addEventListener('offline', emitNavigatorChange);
+
+	function emitNavigatorChange() {
+		navigatorOnline = navigator.onLine;
+	}
+
+	function beat() {
+		var current = serverOnline;
+
+		$http.get('/ping')
+		.success(function() {
+			serverOnline = true;
+		})
+		.error(function(data, status) {
+			serverOnline = false;
+		});
+
+		$rootScope.online = (serverOnline &amp;&amp; navigatorOnline);
+	}
+
+	return {
+		isOnline: function() {
+			return $rootScope.online;
+		},
+		start: function() {
+			//$interval(beat, 2500);
+		},
+		stop: function() {
+
+		}
+	};
+}])
+.factory('HttpInterceptor', ['$q', '$location', 'HttpQueue', function($q, $location, HttpQueue) {
+	return {
+		request: function(config) {
+			HttpQueue.addRequest(config);
+			return config;
+		},
+
+		requestError: function(rejection) {
+			HttpQueue.removeRequest(rejection.config);
+			return $q.reject(rejection);
+		},
+
+		response: function(response) {
+			HttpQueue.removeRequest(response.config, response.data);
+			return response;
+		},
+
+		responseError: function(rejection) {
+			if (HttpQueue.needsHandling(rejection.config) &amp;&amp; rejection.status === 0) {
+				var deferred = $q.defer();
+				deferred.notify('Network issues');
+				HttpQueue.setDeferred(rejection.config, deferred);
+				return deferred.promise;
+			}
+			return $q.reject(rejection);
+		}
+	};
+}]);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalCtrl.html">MeetingExecuteModalCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalInstanceCtrl.html">MeetingExecuteModalInstanceCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Mon Jan 12 2015 10:59:30 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

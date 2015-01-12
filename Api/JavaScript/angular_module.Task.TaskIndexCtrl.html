@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DashboardCtrl</title>
+    <title>JSDoc: Class: TaskIndexCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DashboardCtrl</h1>
+    <h1 class="page-title">Class: TaskIndexCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Dashboard.html">.Dashboard</a>.</span>
+            <span class="ancestors"><a href="angular_module.Task.html">.Task</a>.</span>
         
-        DashboardCtrl
+        TaskIndexCtrl
         </h2>
         
     
@@ -46,7 +46,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="DashboardCtrl"><span class="type-signature"></span>new DashboardCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TaskIndexCtrl"><span class="type-signature"></span>new TaskIndexCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line10">line 10</a>
+        <a href="Features_Task_taskIndexController.js.html">Features/Task/taskIndexController.js</a>, <a href="Features_Task_taskIndexController.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -137,7 +137,7 @@
 
         
             
-<h4 class="name" id=".$scope.meetingList"><span class="type-signature">(static) </span>$scope.meetingList<span class="type-signature"></span></h4>
+<h4 class="name" id=".$scope.breadcrumbs"><span class="type-signature">(static) </span>$scope.breadcrumbs<span class="type-signature"></span></h4>
 
 
 
@@ -177,7 +177,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line44">line 44</a>
+        <a href="Features_Task_taskIndexController.js.html">Features/Task/taskIndexController.js</a>, <a href="Features_Task_taskIndexController.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -195,7 +195,7 @@
 
         
             
-<h4 class="name" id=".$scope.personalInfos"><span class="type-signature">(static) </span>$scope.personalInfos<span class="type-signature"></span></h4>
+<h4 class="name" id=".$scope.loading"><span class="type-signature">(static) </span>$scope.loading<span class="type-signature"></span></h4>
 
 
 
@@ -235,7 +235,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line37">line 37</a>
+        <a href="Features_Task_taskIndexController.js.html">Features/Task/taskIndexController.js</a>, <a href="Features_Task_taskIndexController.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -262,14 +262,96 @@
 
     
 
-    <h4 class="name" id=".$scope.findUpcomingMeetings"><span class="type-signature">(static) </span>$scope.findUpcomingMeetings<span class="signature">(meetingList)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.reloadTasks"><span class="type-signature">(static) </span>$scope.reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Collect only new and upcoming meetings.
+    Fetches all Tasks from backend and reload Tasks.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Features_Task_taskIndexController.js.html">Features/Task/taskIndexController.js</a>, <a href="Features_Task_taskIndexController.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getMeetingName"><span class="type-signature">(static) </span>getMeetingName<span class="signature">(task)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Get the name of selected Task from backend. Sets the name of selected Task.
 </div>
 
 
@@ -305,13 +387,13 @@
 
         <tr>
             
-                <td class="name"><code>meetingList</code></td>
+                <td class="name"><code>task</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">object</span>
 
 
             
@@ -321,7 +403,7 @@
 
             
 
-            <td class="description last">List fo Meetings</td>
+            <td class="description last">Selected Task</td>
         </tr>
 
     
@@ -361,193 +443,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line88">line 88</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".$scope.getNotifications"><span class="type-signature">(static) </span>$scope.getNotifications<span class="signature">()</span><span class="type-signature"> &rarr; {array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Get all globally stored Notifications from $rootScope
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line103">line 103</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    $rootScope.notifications
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".$scope.reloadTasks"><span class="type-signature">(static) </span>$scope.reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line66">line 66</a>
+        <a href="Features_Task_taskIndexController.js.html">Features/Task/taskIndexController.js</a>, <a href="Features_Task_taskIndexController.js.html#line59">line 59</a>
     </li></ul></dd>
     
 

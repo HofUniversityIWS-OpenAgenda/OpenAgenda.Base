@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DashboardCtrl</title>
+    <title>JSDoc: Class: TaskEditCtrl</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DashboardCtrl</h1>
+    <h1 class="page-title">Class: TaskEditCtrl</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="angular_module.Dashboard.html">.Dashboard</a>.</span>
+            <span class="ancestors"><a href="angular_module.Task.html">.Task</a>.</span>
         
-        DashboardCtrl
+        TaskEditCtrl
         </h2>
         
     
@@ -46,7 +46,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="DashboardCtrl"><span class="type-signature"></span>new DashboardCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TaskEditCtrl"><span class="type-signature"></span>new TaskEditCtrl<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line10">line 10</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -133,126 +133,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".$scope.meetingList"><span class="type-signature">(static) </span>$scope.meetingList<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".$scope.personalInfos"><span class="type-signature">(static) </span>$scope.personalInfos<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -262,14 +142,14 @@
 
     
 
-    <h4 class="name" id=".$scope.findUpcomingMeetings"><span class="type-signature">(static) </span>$scope.findUpcomingMeetings<span class="signature">(meetingList)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".$scope.open"><span class="type-signature">(static) </span>$scope.open<span class="signature">(size<span class="signature-attributes">opt</span>, task)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Collect only new and upcoming meetings.
+    Function, which is used to open a modal instance window. Passes the selected Task to the modal window.
 </div>
 
 
@@ -293,6 +173,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -305,23 +187,64 @@
 
         <tr>
             
-                <td class="name"><code>meetingList</code></td>
+                <td class="name"><code>size</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">array</span>
+<span class="param-type">string</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">List fo Meetings</td>
+            <td class="description last">Size of modal window</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>task</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Selected Task</td>
         </tr>
 
     
@@ -361,7 +284,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line88">line 88</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -392,14 +315,14 @@
 
     
 
-    <h4 class="name" id=".$scope.getNotifications"><span class="type-signature">(static) </span>$scope.getNotifications<span class="signature">()</span><span class="type-signature"> &rarr; {array}</span></h4>
+    <h4 class="name" id=".modalInstance.close"><span class="type-signature">(static) </span>modalInstance.close<span class="signature">(string, task)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Get all globally stored Notifications from $rootScope
+    Function, which is fired when a modal instance window is closed. Reloads the Tasks, if it was successful.
 </div>
 
 
@@ -409,6 +332,77 @@
 
 
 
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Possible close reason</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>task</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Selected Task</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -443,111 +437,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line103">line 103</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    $rootScope.notifications
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".$scope.reloadTasks"><span class="type-signature">(static) </span>$scope.reloadTasks<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Reload Tasks. Reloads all of the users Tasks. Opens a alert, if request fails.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Features_Dashboard_dashboardController.js.html">Features/Dashboard/dashboardController.js</a>, <a href="Features_Dashboard_dashboardController.js.html#line66">line 66</a>
+        <a href="Features_Task_taskEditController.js.html">Features/Task/taskEditController.js</a>, <a href="Features_Task_taskEditController.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
