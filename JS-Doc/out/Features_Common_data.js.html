@@ -27,10 +27,26 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @module Data
+ * @namespace angular_module.OpenAgenda
+ * @memberOf angular_module
+ */
+
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
  *
- * @description General data handling and interaction methods
+ * @description Data transfer layer and HTTP interception methods.
  *
+ * &lt;p>
+ * This module keeps track of failed HTTP requests using the accordant HTTP interceptor
+ * for each scope. Scopes in this regard are "fetchAll", "fetch", "save" and "remove", thus
+ * the typical CRUD actions. The data stores are temporarily persisted in the browser's
+ * local storage.
+ * &lt;/p>
+ *
+ * @example OpenAgenda.Data.MeetingStore.fetchAll().then(function(data) { });
+ *
+ * @class Data
+ * @memberOf angular_module.OpenAgenda
  * @author Oliver Hader &lt;oliver@typo3.org>
  */
 angular.module('OpenAgenda.Data', [])
@@ -59,6 +75,14 @@ angular.module('OpenAgenda.Data', [])
 		}
 	}
 }])
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
+ *
+ * @class Interceptor
+ * @memberOf angular_module.OpenAgenda.Data
+ * @description HTTP interception handler calling a callback function in the concrete Data.Store instance
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
 .factory('OpenAgenda.Data.Interceptor', [function() {
 	return {
 		response: function (response) {
@@ -69,10 +93,24 @@ angular.module('OpenAgenda.Data', [])
 		}
 	};
 }])
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
+ *
+ * @abstract
+ * @class Store
+ * @memberOf angular_module.OpenAgenda.Data
+ * @description Abstract data store defining various data-handling methods
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
 .factory('OpenAgenda.Data.Store', ['$q', '$resource', 'OpenAgenda.Data.Utility', 'OpenAgenda.Data.LocalStorage', 'OpenAgenda.Data.Interceptor',
 	function($q, $resource, oaUtility, oaLocalStorage, oaInterceptor) {
 	var stores = {};
 
+	/**
+	 * @constructor
+	 * @memberOf angular_module.OpenAgenda.Data
+	 * @param {string} storeName Name/type of the store (e.g. "Meeting" or "Task")
+	 */
 	function Store(storeName) {
 		var name = storeName;
 		var identifier = '__identitity';
@@ -92,6 +130,13 @@ angular.module('OpenAgenda.Data', [])
 
 		var subjects = {};
 
+		/**
+		 * @private
+		 * @method getInterceptor
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object} subject
+		 * @return {string}
+		 */
 		function getIdentifier(subject) {
 			if (typeof subject === 'object' &amp;&amp; typeof subject[identifier] === 'string') {
 				return subject[identifier];
@@ -101,23 +146,52 @@ angular.module('OpenAgenda.Data', [])
 			return null;
 		}
 
+		/**
+		 * @private
+		 * @method getInterceptor
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object} data
+		 */
 		function getInterceptor(data) {
 			subjects[getIdentifier(data)] = data;
 			console.log(data);
 		}
 
+		/**
+		 * @private
+		 * @method saveInterceptor
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object} data
+		 */
 		function saveInterceptor(data) {
 
 		}
 
+		/**
+		 * @private
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object} data
+		 */
 		function queryInterceptor(data) {
 
 		}
 
+		/**
+		 * @private
+		 * @method removeInterceptor
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object} data
+		 */
 		function removeInterceptor(data) {
 
 		}
 
+		/**
+		 * @private
+		 * @method access
+		 * @param {object} resourceResult
+		 * @returns {{access: Function, invoke: Function}}
+		 */
 		function access(resourceResult) {
 			return {
 				access: function() {
@@ -129,18 +203,44 @@ angular.module('OpenAgenda.Data', [])
 			}
 		}
 
+		/**
+		 * @private
+		 * @method accessWrap
+		 * @param {object} deferred
+		 * @returns {Function}
+		 */
 		function accessWrap(deferred) {
 			return function(resourceResult) {
 				deferred.resolve(resourceResult);
 			}
 		}
 
+		/**
+		 * @description Fetches all objects
+		 * @method fetchAll
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @returns {angular_module.$resource}
+		 */
 		this.fetchAll = function() {
 			return $resource(endpoints.fetchAll, { name: name }, defaultActions);
 		};
+		/**
+		 * @description Fetches one object
+		 * @method fetch
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object|string} subject
+		 * @returns {angular_module.$resource}
+		 */
 		this.fetch = function(subject) {
 			return $resource(endpoints.fetch, { name: name, identifier: getIdentifier(subject) }, defaultActions);
 		};
+		/**
+		 * @description Saves one object
+		 * @method save
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object|string} subject
+		 * @returns {angular_module.$resource}
+		 */
 		this.save = function(subject) {
 			if (getIdentifier(subject) === null) {
 				return $resource(endpoints.create, { name: name, identifier: getIdentifier(subject) }, defaultActions);
@@ -148,6 +248,13 @@ angular.module('OpenAgenda.Data', [])
 				return $resource(endpoints.update, { name: name, identifier: getIdentifier(subject) }, defaultActions);
 			}
 		};
+		/**
+		 * @decription Removes one object
+		 * @method remove
+		 * @memberOf angular_module.OpenAgenda.Data.Store
+		 * @param {object|string} subject
+		 * @returns {angular_module.$resource}
+		 */
 		this.remove = function(subject) {
 			return $resource(endpoints.remove, { name: name, identifier: getIdentifier(subject) }, defaultActions);
 		}
@@ -163,21 +270,60 @@ angular.module('OpenAgenda.Data', [])
 		}
 	}
 }])
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
+ *
+ * @class MeetingStore
+ * @memberOf angular_module.OpenAgenda.Data
+ * @description Concrete instance of a data store for Meeting objects
+ * @param {object} OpenAgenda.Data.Store The abstract data store
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
 .factory('OpenAgenda.Data.MeetingStore', ['OpenAgenda.Data.Store', function(oaDataStore) {
 	return oaDataStore.get('meeting');
 }])
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
+ *
+ * @class TaskStore
+ * @memberOf angular_module.OpenAgenda.Data
+ * @description Concrete instance of a data store for Task objects
+ * @param {object} OpenAgenda.Data.Store The abstract data store
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
 .factory('OpenAgenda.Data.TaskStore', ['OpenAgenda.Data.Store', function(oaDataStore) {
 	return oaDataStore.get('task');
 }])
+/**
+ * @deprecated The OpenAgenda.Data module is experimental and currently not used at all!
+ *
+ * @class LocalStorage
+ * @memberOf angular_module.OpenAgenda.Data
+ * @description Wrapper for browser's local storage implementation
+ * @author Oliver Hader &lt;oliver@typo3.org>
+ */
 .factory('OpenAgenda.Data.LocalStorage', ['$window', '$rootScope', function($window, $rootScope) {
 	angular.element($window).on('storage', function(event) {
 		console.log(event);
 	});
 
 	return {
+		/**
+		 * @description Sets values in local storage
+		 * @method set
+		 * @memberOf angular_module.OpenAgenda.Data.LocalStorage
+		 * @param {string} key
+		 * @param {mixed} value
+		 */
 		set: function(key, value) {
 			$window.localStorage.setItem('OpenAgenda.Data.LocalStorage::' + key, value);
 		},
+		/**
+		 * @description Gets values from local storage
+		 * @method get
+		 * @memberOf angular_module.OpenAgenda.Data.LocalStorage
+		 * @param {string} key
+		 */
 		get: function(key) {
 			return $window.localStorage.getItem('OpenAgenda.Data.LocalStorage::' + key);
 		}
@@ -193,13 +339,13 @@ angular.module('OpenAgenda.Data', [])
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li><li><a href="module-Data.html">Data</a></li><li><a href="module-Http.html">Http</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalCtrl.html">MeetingExecuteModalCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalInstanceCtrl.html">MeetingExecuteModalInstanceCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-ApplicationControllers.html">ApplicationControllers</a></li><li><a href="module-CommonDirectives.html">CommonDirectives</a></li><li><a href="module-CommonFactories.html">CommonFactories</a></li><li><a href="module-CommonServices.html">CommonServices</a></li></ul><h3>Classes</h3><ul><li><a href="angular_module.Dashboard.html">Dashboard</a></li><li><a href="angular_module.Dashboard.DashboardCalendarCtrl.html">DashboardCalendarCtrl</a></li><li><a href="angular_module.Dashboard.DashboardCtrl.html">DashboardCtrl</a></li><li><a href="angular_module.Http.html">Http</a></li><li><a href="angular_module.Http.HttpHeartbeat.html">HttpHeartbeat</a></li><li><a href="angular_module.Http.HttpInterceptor.html">HttpInterceptor</a></li><li><a href="angular_module.Http.HttpManager.html">HttpManager</a></li><li><a href="angular_module.Http.HttpQueue.html">HttpQueue</a></li><li><a href="angular_module.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.html">MeetingEditCtrl</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.AgendaItem.html">AgendaItem</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Invitation.html">Invitation</a></li><li><a href="angular_module.Meeting.MeetingEditCtrl.Meeting.html">Meeting</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.html">MeetingExecuteCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteCtrl.TaskItem.html">TaskItem</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalCtrl.html">MeetingExecuteModalCtrl</a></li><li><a href="angular_module.Meeting.MeetingExecuteModalInstanceCtrl.html">MeetingExecuteModalInstanceCtrl</a></li><li><a href="angular_module.Meeting.MeetingIndexCtrl.html">MeetingIndexCtrl</a></li><li><a href="angular_module.Menu.html">Menu</a></li><li><a href="angular_module.Menu.MenuCtrl.html">MenuCtrl</a></li><li><a href="angular_module.OpenAgenda.Data.html">Data</a></li><li><a href="angular_module.OpenAgenda.Data.Interceptor.html">Interceptor</a></li><li><a href="angular_module.OpenAgenda.Data.LocalStorage.html">LocalStorage</a></li><li><a href="angular_module.OpenAgenda.Data.MeetingStore.html">MeetingStore</a></li><li><a href="angular_module.OpenAgenda.Data.Store.html">Store</a></li><li><a href="angular_module.OpenAgenda.Data.TaskStore.html">TaskStore</a></li><li><a href="angular_module.Setting.html">Setting</a></li><li><a href="angular_module.Setting.UserProfileCtrl.html">UserProfileCtrl</a></li><li><a href="angular_module.Setting.UserSettingCtrl.html">UserSettingCtrl</a></li><li><a href="angular_module.Task.html">Task</a></li><li><a href="angular_module.Task.TaskEditCtrl.html">TaskEditCtrl</a></li><li><a href="angular_module.Task.TaskEditModalInstanceCtrl.html">TaskEditModalInstanceCtrl</a></li><li><a href="angular_module.Task.TaskIndexCtrl.html">TaskIndexCtrl</a></li><li><a href="angular_module.TopBar.html">TopBar</a></li><li><a href="angular_module.TopBar.TopBarCtrl.html">TopBarCtrl</a></li></ul><h3>Namespaces</h3><ul><li><a href="angular_module.OpenAgenda.html">OpenAgenda</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Mon Jan 12 2015 10:59:30 GMT+0100 (CET)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Mon Jan 12 2015 12:07:29 GMT+0100 (CET)
 </footer>
 
 <script> prettyPrint(); </script>
