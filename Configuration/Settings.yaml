@@ -8,6 +8,7 @@ TYPO3:
     object:
       excludeClasses:
         'codeception.codeception': ['.*']
+        'oliverhader.flowception': ['.*']
         'react.promise': ['.*']
         'guzzlehttp.*': ['.*']
         'site5.*': ['.*']
