@@ -6,7 +6,6 @@ $I->wantTo('create a meeting');
 $I->am('administrator');
 $I->amOnPage('/');
 
-$I->makeScreenshot('create');
 $I->loginWithCredentials('admin@openagenda.org', 'password');
 
 $I->click('//a[@href="#"][contains(text(),"Meetings")]', 'div.sidebar-nav');
