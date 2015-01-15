@@ -4,6 +4,9 @@
  */
 
 $I = new AcceptanceTester($scenario);
+
+// Invokes TYPO3 Flow to provide a scenario, a new meeting in this regard
+// The new meeting identity is returned in $flowResult[0]['__identity']
 $flowResult = $I->executeFlowCommandWithJsonResponse('testdata:createmeetings --quantity=1 --json');
 
 $I->wantTo('perform actions and see result');
