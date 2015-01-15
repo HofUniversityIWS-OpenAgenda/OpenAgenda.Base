@@ -18,12 +18,8 @@ modules:
 extensions:
     enabled:
         - Codeception\Extension\Phantoman
-        - Codeception\Extension\Flowception
     config:
         Codeception\Extension\Phantoman:
             # see https://github.com/site5/phantoman#configuration
             path: 'bin/phantomjs'
             port: 4444
-        Codeception\Extension\Flowception:
-            rootPath: '.'
-            context: 'Development/Local'

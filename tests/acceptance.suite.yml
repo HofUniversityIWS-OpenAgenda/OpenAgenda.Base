@@ -8,6 +8,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - AcceptanceHelper
+        - Codeception\Module\Flowception
     config:
         AcceptanceHelper:
             # see http://codeception.com/docs/modules/WebDriver
@@ -16,3 +17,6 @@ modules:
             window_size: 1024x768
             restart: true
             port: 4444
+        Codeception\Module\Flowception:
+            rootPath: '.'
+            context: 'Testing'
