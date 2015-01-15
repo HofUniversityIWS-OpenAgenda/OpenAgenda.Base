@@ -1,5 +1,7 @@
 <?php
-use \Codeception\Util\Locator;
+/**
+ * @author Oliver Hader <oliver@typo3.org>
+ */
 
 $I = new AcceptanceTester($scenario);
 $I->wantTo('login and logout as admin user');

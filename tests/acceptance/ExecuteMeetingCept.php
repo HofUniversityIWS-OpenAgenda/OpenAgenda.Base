@@ -1,4 +1,8 @@
 <?php 
+/**
+ * @author Oliver Hader <oliver@typo3.org>
+ */
+
 $I = new AcceptanceTester($scenario);
 $flowResult = $I->executeFlowCommandWithJsonResponse('testdata:createmeetings --quantity=1 --json');
 
