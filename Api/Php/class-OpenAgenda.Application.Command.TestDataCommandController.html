@@ -149,12 +149,26 @@
 						<a href="namespace-OpenAgenda.Application.Tests.Functional.Service.Export.html">
 							Export						</a>
 							</li>
+					<li class="main">
+						<a href="namespace-OpenAgenda.Application.Tests.Functional.Service.Fixture.html">
+							Fixture						</a>
+							</li>
 								</ul></li></ul></li>
 					<li class="main">
 						<a href="namespace-OpenAgenda.Application.Tests.Unit.html">
 							Unit<span></span>
 						</a>
 							<ul>
+					<li class="main">
+						<a href="namespace-OpenAgenda.Application.Tests.Unit.Controller.html">
+							Controller<span></span>
+						</a>
+							<ul>
+					<li class="main">
+						<a href="namespace-OpenAgenda.Application.Tests.Unit.Controller.Fixture.html">
+							Fixture						</a>
+							</li>
+								</ul></li>
 					<li class="main">
 						<a href="namespace-OpenAgenda.Application.Tests.Unit.Domain.html">
 							Domain<span></span>
@@ -163,6 +177,16 @@
 					<li class="main">
 						<a href="namespace-OpenAgenda.Application.Tests.Unit.Domain.Model.html">
 							Model						</a>
+							</li>
+								</ul></li>
+					<li class="main">
+						<a href="namespace-OpenAgenda.Application.Tests.Unit.Service.html">
+							Service<span></span>
+						</a>
+							<ul>
+					<li class="main">
+						<a href="namespace-OpenAgenda.Application.Tests.Unit.Service.Fixture.html">
+							Fixture						</a>
 							</li>
 								</ul></li></ul></li></ul></li>
 					<li class="main">
@@ -1958,7 +1982,7 @@ These initialized test data provides a fast system check
 
 				<b>Author:</b>
 				Andreas Steiger <a href="&#x6d;&#97;i&#x6c;&#116;o&#x3a;&#97;n&#x64;&#114;e&#x61;&#115;.&#x73;&#116;e&#x69;&#103;e&#x72;&#64;h&#x6f;&#102;-&#x75;&#110;&#105;&#x76;&#101;&#114;&#x73;&#105;&#116;&#x79;&#46;&#100;&#x65;">&#97;n&#x64;&#114;e&#x61;&#115;.&#x73;&#116;e&#x69;&#103;e&#x72;&#64;h&#x6f;&#102;-&#x75;&#110;&#105;&#x76;&#101;&#114;&#x73;&#105;&#116;&#x79;&#46;&#100;&#x65;</a><br>
-			<b>Located at</b> <a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#15-271" title="Go to source code">OpenAgenda.Application/Classes/OpenAgenda/Application/Command/TestDataCommandController.php</a>
+			<b>Located at</b> <a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#15-289" title="Go to source code">OpenAgenda.Application/Classes/OpenAgenda/Application/Command/TestDataCommandController.php</a>
 		<br>
 	</div>
 
@@ -1977,7 +2001,7 @@ These initialized test data provides a fast system check
 
 			<td class="name"><div>
 			<a class="anchor" href="#_createMeetingsCommand">#</a>
-			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#97-183" title="Go to source code">createMeetingsCommand</a>( <span>integer <var>$quantity</var> = <span class="php-num">5</span></span>, <span>integer <var>$itemQuantity</var> = <span class="php-num">3</span></span>, <span>integer <var>$invitations</var> = <span class="php-num">1</span></span> )</code>
+			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#103-201" title="Go to source code">createMeetingsCommand</a>( <span>integer <var>$quantity</var> = <span class="php-num">5</span></span>, <span>integer <var>$itemQuantity</var> = <span class="php-num">3</span></span>, <span>integer <var>$invitations</var> = <span class="php-num">1</span></span>, <span>boolean <var>$json</var> = <span class="php-keyword1">FALSE</span></span> )</code>
 
 			<div class="description short">
 				<p>This command removes all existing meetings and sub items from the database
@@ -2003,6 +2027,8 @@ with dummy data. All created objects are persist in the database.</p>
 						<dd>The quantity of new sub-items (agenda items and tasks)</dd>
 						<dt><var>$invitations</var></dt>
 						<dd>The quantity of Invitations</dd>
+						<dt><var>$json</var></dt>
+						<dd>Use JSON response instead of plain text</dd>
 					</dl></div>
 
 					<h4>Returns</h4>
@@ -2027,7 +2053,7 @@ with dummy data. All created objects are persist in the database.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_deleteMeetingCommand">#</a>
-			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#185-200" title="Go to source code">deleteMeetingCommand</a>( <span>string <var>$identifier</var> = <span class="php-quote">'7c76e975-0390-5f84-f161-2146f0fb7b1f'</span></span> )</code>
+			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#203-218" title="Go to source code">deleteMeetingCommand</a>( <span>string <var>$identifier</var> = <span class="php-quote">'7c76e975-0390-5f84-f161-2146f0fb7b1f'</span></span> )</code>
 
 			<div class="description short">
 				<p>This action removes one existing meeting from the database.</p>
@@ -2063,16 +2089,14 @@ with dummy data. All created objects are persist in the database.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_createUserCommand">#</a>
-			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#202-234" title="Go to source code">createUserCommand</a>( <span>string <var>$identifier</var> = <span class="php-quote">'admin@openagenda.org'</span></span>, <span>string <var>$role</var> = <span class="php-quote">'Administrator'</span></span>, <span>string <var>$firstname</var> = <span class="php-quote">'Mark'</span></span>, <span>string <var>$lastname</var> = <span class="php-quote">'Mabuse'</span></span> )</code>
+			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#220-252" title="Go to source code">createUserCommand</a>( <span>string <var>$identifier</var> = <span class="php-quote">'admin@openagenda.org'</span></span>, <span>string <var>$role</var> = <span class="php-quote">'Administrator'</span></span>, <span>string <var>$firstname</var> = <span class="php-quote">'Mark'</span></span>, <span>string <var>$lastname</var> = <span class="php-quote">'Mabuse'</span></span>, <span>string <var>$password</var> = <span class="php-quote">'password'</span></span> )</code>
 
 			<div class="description short">
-				<p>This action removes one system user account (default: admin account)
-from the database.</p>
+				<p>This action removes one system user account (default: admin account) from the database.</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>This action removes one system user account (default: admin account)
-from the database.</p>
+				<p>This action removes one system user account (default: admin account) from the database.</p>
 
 <pre>./flow testdata:createuser --&lt;parameters&gt;</pre>
 
@@ -2086,7 +2110,9 @@ from the database.</p>
 						<dt><var>$firstname</var></dt>
 						<dd>First name (default: 'Mark')</dd>
 						<dt><var>$lastname</var></dt>
-						<dd>Last name(default: 'Mabuse')</dd>
+						<dd>Last name (default: 'Mabuse')</dd>
+						<dt><var>$password</var></dt>
+						<dd>Password (default: 'password')</dd>
 					</dl></div>
 
 
@@ -2107,7 +2133,7 @@ from the database.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_createUsersCommand">#</a>
-			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#236-252" title="Go to source code">createUsersCommand</a>( )</code>
+			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#254-270" title="Go to source code">createUsersCommand</a>( )</code>
 
 			<div class="description short">
 				<p>This action creates 6 system user accounts if these accounts does not exist.
@@ -2142,7 +2168,7 @@ with the role of administrator.</p>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_clearHistoryCommand">#</a>
-			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#254-270" title="Go to source code">clearHistoryCommand</a>( <span>boolean <var>$sureToDeleteFlag</var> = <span class="php-keyword1">false</span></span> )</code>
+			<code><a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#272-288" title="Go to source code">clearHistoryCommand</a>( <span>boolean <var>$sureToDeleteFlag</var> = <span class="php-keyword1">false</span></span> )</code>
 
 			<div class="description short">
 				<p>This action clears all the history entries in the database.</p>
@@ -2503,6 +2529,34 @@ with the role of administrator.</p>
 			<td class="value">
 				<div>
 					<a href="#$persistenceManager" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="arrayService" id="$arrayService">
+			<td class="attributes"><code>
+				protected  
+				<code><a href="class-OpenAgenda.Application.Service.ArrayService.html">OpenAgenda\Application\Service\ArrayService</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-OpenAgenda.Application.Command.TestDataCommandController.html#97-101" title="Go to source code"><var>$arrayService</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+						<h4>Flow\inject</h4>
+						<div class="list">
+						</div>
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$arrayService" class="anchor">#</a>
 					<code></code>
 				</div>
 			</td>
