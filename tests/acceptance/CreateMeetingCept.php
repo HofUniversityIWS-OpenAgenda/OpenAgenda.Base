@@ -4,6 +4,10 @@
  */
 
 $I = new AcceptanceTester($scenario);
+
+// Invokes TYPO3 Flow to provide a proper user account
+$I->executeFlowCommand('testdata:createuser --identifier admin@openagenda.org --password password --firstname Mark --lastname Mabuse');
+
 $I->wantTo('create a meeting');
 $I->am('administrator');
 $I->amOnPage('/');

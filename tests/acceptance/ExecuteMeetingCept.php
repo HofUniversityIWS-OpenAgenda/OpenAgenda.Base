@@ -5,6 +5,9 @@
 
 $I = new AcceptanceTester($scenario);
 
+// Invokes TYPO3 Flow to provide a proper user account
+$I->executeFlowCommand('testdata:createuser --identifier admin@openagenda.org --password password --firstname Mark --lastname Mabuse');
+
 // Invokes TYPO3 Flow to provide a scenario, a new meeting in this regard
 // The new meeting identity is returned in $flowResult[0]['__identity']
 $flowResult = $I->executeFlowCommandWithJsonResponse('testdata:createmeetings --quantity=1 --json');
@@ -55,7 +58,5 @@ $I->click('Meeting abschließen');
 $I->waitForElement('div.modal-dialog');
 $I->see('Erfolg', 'div.modal-dialog div.modal-header');
 $I->click('OK', 'div.modal-dialog');
-
-$I->makeScreenshot('execute');
 
 $I->logout();
