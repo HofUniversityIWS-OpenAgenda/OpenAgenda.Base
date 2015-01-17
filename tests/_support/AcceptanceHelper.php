@@ -24,6 +24,7 @@ class AcceptanceHelper extends \Codeception\Module\WebDriver {
 	 */
 	public function loginWithCredentials($username, $password) {
 		$I = $this;
+		$I->waitForText('Bitte melden Sie sich an', NULL, 'h3.panel-title');
 		$I->seeElement(self::SelectorPrefix_AuthenticationForm . '[username]"]');
 		$I->seeElement(self::SelectorPrefix_AuthenticationForm . '[password]"]');
 		$I->fillField(self::SelectorPrefix_AuthenticationForm . '[username]"]', $username);
