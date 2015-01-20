@@ -27,13 +27,4 @@ describe('OpenAgenda', function () {
             expect(dashboardCtrl).toBeDefined();
         });
     });
-
-
 });
-/*
- describe('uiCalendar', function () {
- scope = _$rootScope_.$new();
- $controller = _$controller_;
-
-
- });*/
